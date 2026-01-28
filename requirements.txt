@@ -1,0 +1,9 @@
+# Vehicle Optimization System Requirements
+# All built-in Python libraries, no external dependencies needed
+
+# Python 3.8+ required for:
+# - dataclasses (built-in)
+# - typing (built-in)
+# - json (built-in)
+# - datetime (built-in)
+# - math (built-in)
