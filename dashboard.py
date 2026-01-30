@@ -8,6 +8,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import urllib.parse
+import numpy as np
+from scipy.stats import linregress
 from database import (
     DatabaseManager, VehicleRepository, MarketPriceRepository,
     ProblemRepository, DriverFitRepository, MarketPrice
@@ -15,6 +18,22 @@ from database import (
 from scoring_engine import VehicleScorer, UserPreferences
 from recommendation_engine import RecommendationEngine
 from market_analysis import MarketAnalyzer
+
+
+def generate_fb_marketplace_link(vehicle_name: str, price: float, city: str = "", state: str = "") -> str:
+    """Generate Facebook Marketplace search URL for a vehicle"""
+    search_query = vehicle_name.replace(' ', '+')
+    price_min = int(price * 0.95)
+    price_max = int(price * 1.05)
+
+    url = f"https://www.facebook.com/marketplace/search/?query={search_query}&minPrice={price_min}&maxPrice={price_max}"
+
+    # Add location if available
+    if city and state:
+        location = f"{city}+{state}".replace(' ', '+')
+        url += f"&exact=false"
+
+    return url
 
 
 # Page configuration
@@ -108,88 +127,277 @@ def main():
 
 
 def show_home():
-    """Home page with overview"""
+    """Home page with multi-dimensional analysis"""
 
     st.markdown('<h1 class="main-header">🚗 Car Valuation Dashboard</h1>', unsafe_allow_html=True)
 
     st.markdown("""
-    ### Welcome to your comprehensive car valuation system!
+    ### Welcome! Find the best vehicle deals with data-driven analysis.
 
-    This dashboard helps you find the best vehicle deals by analyzing:
-    - **Fair market values** across different regions
-    - **Vehicle reliability** and known problems
-    - **Total cost of ownership** over 3 years
-    - **Driver fit** especially for tall drivers (6'3"+)
-    - **Market trends** and arbitrage opportunities
+    **📊 Go to Market Analysis → Multi-Dimensional Analysis** to:
+    - Compare vehicles across Price, Mileage, Year, MPG, and Maintenance Cost
+    - View regression analysis with R² scores and confidence bands
+    - **Click on any data point** to open the Facebook Marketplace listing
+    - Find statistically underpriced vehicles (below -2σ confidence band)
     """)
 
     # Quick stats
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
 
-    vehicles = repos['vehicle_repo'].find_vehicles()
-    listings = repos['price_repo'].get_listings()
+    with repos['db'].get_connection() as conn:
+        cursor = conn.execute("SELECT COUNT(DISTINCT make || model) FROM vehicles")
+        unique_models = cursor.fetchone()[0]
+
+        cursor = conn.execute("SELECT COUNT(*) FROM market_prices")
+        total_listings = cursor.fetchone()[0]
+
+        cursor = conn.execute("SELECT COUNT(*) FROM market_prices WHERE LENGTH(source_url) > 0")
+        with_urls = cursor.fetchone()[0]
 
     with col1:
-        st.metric("🚙 Vehicles in Database", len(vehicles))
+        st.metric("📊 Unique Models", unique_models)
 
     with col2:
-        st.metric("📋 Active Listings", len([l for l in listings if not l.get('sold')]))
+        st.metric("📋 Total Listings", total_listings)
 
     with col3:
-        st.metric("✅ Sold Listings", len([l for l in listings if l.get('sold')]))
+        st.metric("🔗 With Clickable URLs", f"{with_urls} ({100*with_urls//total_listings}%)")
 
-    with col4:
-        avg_price = sum(l['asking_price'] for l in listings) / len(listings) if listings else 0
-        st.metric("💰 Avg Asking Price", f"${avg_price:,.0f}")
-
-    # Market heat
     st.markdown("---")
-    st.subheader("📈 Market Conditions")
 
-    heat = repos['market_analyzer'].calculate_market_heat()
+    # Multi-dimensional analysis on home page
+    st.subheader("📊 Interactive Vehicle Analysis")
 
-    if 'error' not in heat:
-        col1, col2 = st.columns([1, 2])
+    # Get unique models for filtering
+    query = """
+        SELECT DISTINCT v.make, v.model, COUNT(*) as listing_count
+        FROM vehicles v
+        JOIN market_prices mp ON v.id = mp.vehicle_id
+        GROUP BY v.make, v.model
+        HAVING listing_count >= 3
+        ORDER BY listing_count DESC, v.make, v.model
+    """
 
-        with col1:
-            st.metric("Market Condition", heat['market_condition'])
-            st.metric("Sell-Through Rate", f"{heat['sell_through_rate']}%")
+    with repos['db'].get_connection() as conn:
+        cursor = conn.execute(query)
+        models = cursor.fetchall()
 
-        with col2:
-            st.info(f"**Buyer Advice:** {heat['buyer_advice']}")
+    if not models:
+        st.warning("Not enough data for analysis. Add more listings (need at least 3 per model).")
+    else:
+        # Model selector
+        model_options = [f"{make} {model} ({count} listings)" for make, model, count in models]
+        selected_model = st.selectbox("Select Model to Analyze", model_options, key="home_model")
 
-            # Supply chart
-            supply_df = pd.DataFrame([
-                {'Vehicle': k, 'Listings': v}
-                for k, v in heat['supply_by_vehicle'].items()
-            ])
+        if selected_model:
+            # Extract make and model
+            make = selected_model.split()[0]
+            model = selected_model.split()[1]
 
-            fig = px.bar(supply_df, x='Vehicle', y='Listings',
-                        title="Current Inventory by Vehicle")
-            st.plotly_chart(fig, use_container_width=True)
+            # Axis selection
+            col1, col2 = st.columns(2)
 
-    # Recent listings
-    st.markdown("---")
-    st.subheader("🆕 Recent Listings")
+            axis_options = {
+                "Price ($)": "price",
+                "Mileage": "mileage",
+                "Year": "year",
+                "MPG (Est.)": "mpg",
+                "Annual Maintenance Cost (Est.)": "maintenance"
+            }
 
-    if listings:
-        recent = sorted(listings, key=lambda x: x.get('listing_date', ''), reverse=True)[:5]
+            with col1:
+                x_axis_label = st.selectbox("X-Axis", list(axis_options.keys()), index=1, key="home_x")  # Default: Mileage
 
-        for listing in recent:
-            with st.container():
-                col1, col2, col3, col4 = st.columns([3, 2, 2, 2])
+            with col2:
+                y_axis_label = st.selectbox("Y-Axis", list(axis_options.keys()), index=0, key="home_y")  # Default: Price
 
-                with col1:
-                    st.write(f"**{listing['year']} {listing['make']} {listing['model']}**")
+            x_axis = axis_options[x_axis_label]
+            y_axis = axis_options[y_axis_label]
 
-                with col2:
-                    st.write(f"${listing['asking_price']:,.0f}")
+            # Optional color dimension
+            color_by_label = st.selectbox("Color By (optional)", ["None"] + list(axis_options.keys()), index=3, key="home_color")  # Default: Year
+            color_by = axis_options.get(color_by_label, None) if color_by_label != "None" else None
 
-                with col3:
-                    st.write(f"{listing['mileage']:,} mi")
+            # Fetch data for selected model
+            query = """
+                SELECT
+                    v.year,
+                    v.make,
+                    v.model,
+                    mp.asking_price as price,
+                    mp.mileage,
+                    mp.city,
+                    mp.state,
+                    mp.distance_miles,
+                    mp.source_url,
+                    mp.id
+                FROM market_prices mp
+                JOIN vehicles v ON mp.vehicle_id = v.id
+                WHERE v.make = ? AND v.model = ?
+                ORDER BY v.year DESC, mp.asking_price
+            """
 
-                with col4:
-                    st.write(listing.get('city', 'N/A'))
+            with repos['db'].get_connection() as conn:
+                cursor = conn.execute(query, (make, model))
+                listings = cursor.fetchall()
+
+            if not listings:
+                st.warning(f"No listings found for {make} {model}")
+            else:
+                # Convert to dataframe
+                df = pd.DataFrame(listings, columns=['year', 'make', 'model', 'price', 'mileage', 'city', 'state', 'distance', 'source_url', 'id'])
+
+                # Add calculated fields (MPG and maintenance)
+                def estimate_mpg(row):
+                    model_lower = row['model'].lower()
+                    year = row['year']
+                    if 'tacoma' in model_lower:
+                        return 21 if year >= 2016 else 19
+                    elif '4runner' in model_lower:
+                        return 17 if year >= 2010 else 16
+                    elif 'highlander' in model_lower:
+                        return 24 if year >= 2020 else 21
+                    elif 'sequoia' in model_lower:
+                        return 15 if year >= 2018 else 14
+                    elif 'tundra' in model_lower:
+                        return 15 if year >= 2014 else 14
+                    elif 'model y' in model_lower or 'model 3' in model_lower:
+                        return 120
+                    elif 'model s' in model_lower or 'model x' in model_lower:
+                        return 105
+                    elif 'gx' in model_lower:
+                        return 16 if year >= 2014 else 15
+                    elif 'lx' in model_lower:
+                        return 14 if year >= 2016 else 13
+                    elif 'rx' in model_lower:
+                        return 25 if year >= 2020 else 22
+                    elif 'es' in model_lower:
+                        return 28 if year >= 2019 else 25
+                    elif 'is' in model_lower:
+                        return 26 if year >= 2014 else 24
+                    else:
+                        return 20
+
+                def estimate_maintenance(row):
+                    age = 2026 - row['year']
+                    mileage = row['mileage']
+                    model_lower = row['model'].lower()
+                    if 'tesla' in model_lower or 'model' in model_lower:
+                        base = 500
+                    elif any(brand in model_lower for brand in ['lexus', 'gx', 'lx', 'rx', 'es', 'is', 'gs']):
+                        base = 1000
+                    else:
+                        base = 800
+                    age_factor = 1 + (age * 0.1)
+                    if mileage > 150000:
+                        mileage_factor = 1.5
+                    elif mileage > 100000:
+                        mileage_factor = 1.3
+                    elif mileage > 50000:
+                        mileage_factor = 1.1
+                    else:
+                        mileage_factor = 1.0
+                    return int(base * age_factor * mileage_factor)
+
+                df['mpg'] = df.apply(estimate_mpg, axis=1)
+                df['maintenance'] = df.apply(estimate_maintenance, axis=1)
+
+                # Create hover text with clickable URL
+                df['hover_text'] = df.apply(
+                    lambda row: f"<b>{row['year']} {row['make']} {row['model']}</b><br>" +
+                               f"💰 Price: ${row['price']:,.0f}<br>" +
+                               f"🛣️ Mileage: {row['mileage']:,}<br>" +
+                               f"⛽ MPG: {row['mpg']}<br>" +
+                               f"🔧 Maintenance/yr: ${row['maintenance']:,.0f}<br>" +
+                               f"📍 Location: {row['city']}, {row['state']}" +
+                               (f"<br>📏 Distance: {row['distance']:.0f}mi" if pd.notna(row['distance']) else "") +
+                               (f"<br><br>🔗 <a href='{row['source_url']}' target='_blank' style='color:#1E88E5'>Click to view on Facebook</a>" if pd.notna(row['source_url']) and row['source_url'] else "<br><br>⚠️ No listing URL available"),
+                    axis=1
+                )
+
+                # Calculate linear regression
+                x_data = df[x_axis].values
+                y_data = df[y_axis].values
+                valid_mask = ~(np.isnan(x_data) | np.isnan(y_data))
+                x_clean = x_data[valid_mask]
+                y_clean = y_data[valid_mask]
+
+                if len(x_clean) >= 3:
+                    slope, intercept, r_value, p_value, std_err = linregress(x_clean, y_clean)
+                    r_squared = r_value ** 2
+                    x_range = np.linspace(x_clean.min(), x_clean.max(), 100)
+                    y_pred = slope * x_range + intercept
+                    y_fit = slope * x_clean + intercept
+                    residuals = y_clean - y_fit
+                    std_residuals = np.std(residuals)
+                    y_pred_1std_upper = y_pred + std_residuals
+                    y_pred_1std_lower = y_pred - std_residuals
+                    y_pred_2std_upper = y_pred + 2 * std_residuals
+                    y_pred_2std_lower = y_pred - 2 * std_residuals
+                else:
+                    r_squared = None
+                    slope = None
+
+                # Create scatter plot
+                if color_by:
+                    fig = px.scatter(
+                        df, x=x_axis, y=y_axis, color=color_by,
+                        hover_data={'hover_text': True, x_axis: False, y_axis: False, color_by: False},
+                        title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
+                        labels={x_axis: x_axis_label, y_axis: y_axis_label, color_by: color_by_label},
+                        color_continuous_scale='Viridis'
+                    )
+                else:
+                    fig = px.scatter(
+                        df, x=x_axis, y=y_axis,
+                        hover_data={'hover_text': True, x_axis: False, y_axis: False},
+                        title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
+                        labels={x_axis: x_axis_label, y_axis: y_axis_label}
+                    )
+
+                # Add regression bands
+                if len(x_clean) >= 3:
+                    fig.add_trace(go.Scatter(
+                        x=np.concatenate([x_range, x_range[::-1]]),
+                        y=np.concatenate([y_pred_2std_upper, y_pred_2std_lower[::-1]]),
+                        fill='toself', fillcolor='rgba(128, 128, 128, 0.15)',
+                        line=dict(color='rgba(255,255,255,0)'),
+                        hoverinfo='skip', showlegend=True, name='±2σ (95% confidence)'
+                    ))
+                    fig.add_trace(go.Scatter(
+                        x=np.concatenate([x_range, x_range[::-1]]),
+                        y=np.concatenate([y_pred_1std_upper, y_pred_1std_lower[::-1]]),
+                        fill='toself', fillcolor='rgba(128, 128, 128, 0.25)',
+                        line=dict(color='rgba(255,255,255,0)'),
+                        hoverinfo='skip', showlegend=True, name='±1σ (68% confidence)'
+                    ))
+                    fig.add_trace(go.Scatter(
+                        x=x_range, y=y_pred, mode='lines',
+                        line=dict(color='red', width=2, dash='dash'),
+                        name=f'Linear Fit (R²={r_squared:.3f})',
+                        hovertemplate=f'y = {slope:.2f}x + {intercept:.2f}<extra></extra>'
+                    ))
+
+                fig.update_traces(hovertemplate='%{customdata[0]}<extra></extra>', selector=dict(mode='markers'))
+                fig.update_layout(height=600, showlegend=True,
+                                legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01))
+
+                st.plotly_chart(fig, use_container_width=True)
+
+                # Quick stats
+                if len(x_clean) >= 3 and r_squared is not None:
+                    col1, col2, col3, col4 = st.columns(4)
+                    with col1:
+                        st.metric("R²", f"{r_squared:.3f}")
+                    with col2:
+                        st.metric("Listings", len(df))
+                    with col3:
+                        nearby = df[df['distance'] <= 100].shape[0] if 'distance' in df.columns else 0
+                        st.metric("Within 100mi", nearby)
+                    with col4:
+                        st.metric("Avg Price", f"${df['price'].mean():,.0f}")
+
+                st.info("💡 **Tip:** Hover over any dot and click the blue link to view on Facebook Marketplace!")
 
 
 def show_vehicle_finder():
@@ -213,6 +421,11 @@ def show_vehicle_finder():
         max_mileage = st.number_input("Max Mileage",
                                       min_value=0, max_value=200000,
                                       value=50000, step=10000)
+
+        max_distance = st.number_input("Max Distance (miles)",
+                                       min_value=0, max_value=500,
+                                       value=100, step=25,
+                                       help="From Santa Cruz / San Jose")
 
     with col2:
         use_case = st.selectbox(
@@ -275,7 +488,40 @@ def show_vehicle_finder():
 
     if st.button("🔍 Find Matches", type="primary"):
         with st.spinner("Searching for matches..."):
-            matches = repos['recommender'].find_best_matches(prefs, limit=10)
+            matches = repos['recommender'].find_best_matches(prefs, limit=50)  # Get more, then filter
+
+            # Filter by distance
+            if matches and max_distance < 500:
+                filtered_matches = []
+                for match in matches:
+                    listing = match['listing']
+                    # Get distance from database
+                    distance_query = "SELECT distance_miles FROM market_prices WHERE id = ?"
+                    with repos['db'].get_connection() as conn:
+                        cursor = conn.execute(distance_query, (listing['id'],))
+                        result = cursor.fetchone()
+                        distance = result[0] if result and result[0] is not None else None
+
+                    if distance is not None and distance <= max_distance:
+                        match['distance'] = distance
+                        filtered_matches.append(match)
+                    elif distance is None:  # Include unknowns
+                        match['distance'] = None
+                        filtered_matches.append(match)
+
+                # Sort by score, then by distance
+                filtered_matches.sort(key=lambda x: (-x['score']['total_score'], x['distance'] if x['distance'] is not None else 9999))
+                matches = filtered_matches[:10]  # Take top 10
+            else:
+                # Add distance info even if not filtering
+                for match in matches:
+                    listing = match['listing']
+                    distance_query = "SELECT distance_miles FROM market_prices WHERE id = ?"
+                    with repos['db'].get_connection() as conn:
+                        cursor = conn.execute(distance_query, (listing['id'],))
+                        result = cursor.fetchone()
+                        distance = result[0] if result and result[0] is not None else None
+                    match['distance'] = distance
 
         if not matches:
             st.warning("No vehicles found matching your criteria. Try adjusting your requirements.")
@@ -327,7 +573,24 @@ def show_vehicle_finder():
                         fig.update_layout(height=300)
                         st.plotly_chart(fig, use_container_width=True)
 
-                        st.markdown(f"**Location:** {listing.get('city', 'N/A')}, {listing.get('region', 'N/A')}")
+                        location_text = f"**Location:** {listing.get('city', 'N/A')}, {listing.get('region', 'N/A')}"
+                        if match.get('distance') is not None:
+                            location_text += f" ({match['distance']:.0f} miles)"
+                        st.markdown(location_text)
+
+                        # Show actual listing URL with source indicator
+                        if listing.get('source_url'):
+                            st.markdown(f"📍 **Source:** Facebook Marketplace")
+                            st.markdown(f"🔗 [View Listing]({listing['source_url']})")
+                        else:
+                            vehicle_name = f"{veh['year']} {veh['make']} {veh['model']}"
+                            fb_search_url = generate_fb_marketplace_link(
+                                vehicle_name,
+                                listing['asking_price'],
+                                listing.get('city', ''),
+                                listing.get('state', '')
+                            )
+                            st.markdown(f"🔍 [Search on Facebook Marketplace]({fb_search_url})")
 
 
 def show_deal_finder():
@@ -340,18 +603,81 @@ def show_deal_finder():
     These represent the best opportunities for immediate purchase.
     """)
 
-    threshold = st.slider(
-        "Minimum Discount (%)",
-        min_value=5,
-        max_value=25,
-        value=10,
-        step=5
-    )
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        threshold = st.slider(
+            "Minimum Discount (%)",
+            min_value=5,
+            max_value=25,
+            value=10,
+            step=5
+        )
+
+    with col2:
+        price_range = st.slider(
+            "Price Range ($)",
+            min_value=0,
+            max_value=100000,
+            value=(5000, 50000),
+            step=5000,
+            format="$%d"
+        )
+
+    with col3:
+        max_distance = st.slider(
+            "Max Distance (miles)",
+            min_value=0,
+            max_value=500,
+            value=100,
+            step=25,
+            help="Distance from Santa Cruz / San Jose"
+        )
+
+    with col4:
+        max_mileage = st.slider(
+            "Max Mileage",
+            min_value=0,
+            max_value=200000,
+            value=100000,
+            step=10000,
+            format="%d mi",
+            help="Maximum vehicle mileage"
+        )
 
     deals = repos['market_analyzer'].find_underpriced_listings(threshold_pct=threshold)
 
+    # Filter by price range, mileage, and distance
+    if deals:
+        # Filter by price range
+        deals = [d for d in deals if price_range[0] <= d['asking_price'] <= price_range[1]]
+
+        # Filter by mileage
+        deals = [d for d in deals if d['mileage'] <= max_mileage]
+
+        # Filter by distance
+        filtered_deals = []
+        for deal in deals:
+            # Get distance from database
+            distance_query = "SELECT distance_miles FROM market_prices WHERE id = ?"
+            with repos['db'].get_connection() as conn:
+                cursor = conn.execute(distance_query, (deal['listing_id'],))
+                result = cursor.fetchone()
+                distance = result[0] if result and result[0] is not None else None
+
+            if distance is not None and distance <= max_distance:
+                deal['distance'] = distance
+                filtered_deals.append(deal)
+            elif distance is None and max_distance >= 500:  # Include unknowns if max is high
+                deal['distance'] = None
+                filtered_deals.append(deal)
+
+        # Sort by distance (closest first)
+        filtered_deals.sort(key=lambda x: x['distance'] if x['distance'] is not None else 9999)
+        deals = filtered_deals
+
     if not deals:
-        st.info(f"No listings found at least {threshold}% below market average.")
+        st.info(f"No listings found matching your criteria ({threshold}% discount, ${price_range[0]:,}-${price_range[1]:,}, ≤{max_mileage:,} miles, within {max_distance} mi).")
     else:
         st.success(f"Found {len(deals)} underpriced listings!")
 
@@ -376,7 +702,10 @@ def show_deal_finder():
 
                 with col1:
                     st.markdown(f"### {deal['vehicle']}")
-                    st.write(f"**Location:** {deal['location']}")
+                    location_text = f"**Location:** {deal['location']}"
+                    if deal.get('distance') is not None:
+                        location_text += f" ({deal['distance']:.0f} miles away)"
+                    st.write(location_text)
                     st.write(f"**Condition:** {deal['condition']} | **Mileage:** {deal['mileage']:,}")
 
                 with col2:
@@ -389,6 +718,29 @@ def show_deal_finder():
                              delta_color="inverse")
                     st.write(f"*Listing ID: {deal['listing_id']}*")
 
+                # Show actual listing URL if available
+                # Need to get the listing details to check for source_url
+                listing_query = "SELECT source_url FROM market_prices WHERE id = ?"
+                with repos['db'].get_connection() as conn:
+                    cursor = conn.execute(listing_query, (deal['listing_id'],))
+                    listing_row = cursor.fetchone()
+                    source_url = listing_row[0] if listing_row else None
+
+                if source_url:
+                    st.markdown(f"📍 **Source:** Facebook Marketplace")
+                    st.markdown(f"🔗 [View Listing]({source_url})")
+                else:
+                    location_parts = deal['location'].split(', ')
+                    city = location_parts[0] if location_parts else ""
+                    state = location_parts[1] if len(location_parts) > 1 else ""
+                    fb_search_url = generate_fb_marketplace_link(
+                        deal['vehicle'],
+                        deal['asking_price'],
+                        city,
+                        state
+                    )
+                    st.markdown(f"🔍 [Search on Facebook Marketplace]({fb_search_url})")
+
                 st.markdown("---")
 
 
@@ -397,7 +749,7 @@ def show_market_analysis():
 
     st.title("📊 Market Analysis")
 
-    tab1, tab2, tab3 = st.tabs(["Regional Pricing", "Best Markets", "Price Trends"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Regional Pricing", "Best Markets", "Price Trends", "Multi-Dimensional Analysis"])
 
     with tab1:
         st.subheader("Regional Price Comparison")
@@ -489,6 +841,377 @@ def show_market_analysis():
     with tab3:
         st.subheader("Price Trends")
         st.info("Price trend analysis requires more historical data. Add more listings to see trends over time.")
+
+    with tab4:
+        st.subheader("Multi-Dimensional Vehicle Analysis")
+        st.markdown("Compare vehicles across multiple dimensions: price, mileage, year, MPG, and maintenance costs.")
+
+        # Get unique models for filtering
+        query = """
+            SELECT DISTINCT v.make, v.model, COUNT(*) as listing_count
+            FROM vehicles v
+            JOIN market_prices mp ON v.id = mp.vehicle_id
+            GROUP BY v.make, v.model
+            HAVING listing_count >= 3
+            ORDER BY v.make, v.model
+        """
+
+        with repos['db'].get_connection() as conn:
+            cursor = conn.execute(query)
+            models = cursor.fetchall()
+
+        if not models:
+            st.warning("Not enough data for analysis. Add more listings.")
+        else:
+            # Model selector
+            model_options = [f"{make} {model} ({count} listings)" for make, model, count in models]
+            selected_model = st.selectbox("Select Model to Analyze", model_options)
+
+            if selected_model:
+                # Extract make and model
+                make = selected_model.split()[0]
+                model = selected_model.split()[1]
+
+                # Axis selection
+                col1, col2 = st.columns(2)
+
+                axis_options = {
+                    "Price ($)": "price",
+                    "Mileage": "mileage",
+                    "Year": "year",
+                    "MPG (Est.)": "mpg",
+                    "Annual Maintenance Cost (Est.)": "maintenance"
+                }
+
+                with col1:
+                    x_axis_label = st.selectbox("X-Axis", list(axis_options.keys()), index=1)  # Default: Mileage
+
+                with col2:
+                    y_axis_label = st.selectbox("Y-Axis", list(axis_options.keys()), index=0)  # Default: Price
+
+                x_axis = axis_options[x_axis_label]
+                y_axis = axis_options[y_axis_label]
+
+                # Optional color dimension
+                color_by_label = st.selectbox("Color By (optional)", ["None"] + list(axis_options.keys()), index=3)  # Default: Year
+                color_by = axis_options.get(color_by_label, None) if color_by_label != "None" else None
+
+                # Fetch data for selected model
+                query = """
+                    SELECT
+                        v.year,
+                        v.make,
+                        v.model,
+                        mp.asking_price as price,
+                        mp.mileage,
+                        mp.city,
+                        mp.state,
+                        mp.distance_miles,
+                        mp.source_url,
+                        mp.id
+                    FROM market_prices mp
+                    JOIN vehicles v ON mp.vehicle_id = v.id
+                    WHERE v.make = ? AND v.model = ?
+                    ORDER BY v.year DESC, mp.asking_price
+                """
+
+                with repos['db'].get_connection() as conn:
+                    cursor = conn.execute(query, (make, model))
+                    listings = cursor.fetchall()
+
+                if not listings:
+                    st.warning(f"No listings found for {make} {model}")
+                else:
+                    # Convert to dataframe
+                    df = pd.DataFrame(listings, columns=['year', 'make', 'model', 'price', 'mileage', 'city', 'state', 'distance', 'source_url', 'id'])
+
+                    # Add calculated fields
+                    # MPG estimates based on vehicle type and year
+                    def estimate_mpg(row):
+                        model_lower = row['model'].lower()
+                        year = row['year']
+
+                        # Estimates based on common models
+                        if 'tacoma' in model_lower:
+                            return 21 if year >= 2016 else 19
+                        elif '4runner' in model_lower:
+                            return 17 if year >= 2010 else 16
+                        elif 'highlander' in model_lower:
+                            return 24 if year >= 2020 else 21
+                        elif 'sequoia' in model_lower:
+                            return 15 if year >= 2018 else 14
+                        elif 'tundra' in model_lower:
+                            return 15 if year >= 2014 else 14
+                        elif 'model y' in model_lower or 'model 3' in model_lower:
+                            return 120  # MPGe for electric
+                        elif 'model s' in model_lower or 'model x' in model_lower:
+                            return 105  # MPGe for electric
+                        elif 'gx' in model_lower:
+                            return 16 if year >= 2014 else 15
+                        elif 'lx' in model_lower:
+                            return 14 if year >= 2016 else 13
+                        elif 'rx' in model_lower:
+                            return 25 if year >= 2020 else 22
+                        elif 'es' in model_lower:
+                            return 28 if year >= 2019 else 25
+                        elif 'is' in model_lower:
+                            return 26 if year >= 2014 else 24
+                        else:
+                            return 20  # Default
+
+                    # Maintenance cost estimates (annual, based on age and mileage)
+                    def estimate_maintenance(row):
+                        age = 2026 - row['year']
+                        mileage = row['mileage']
+
+                        # Base cost by brand
+                        model_lower = row['model'].lower()
+                        if 'tesla' in model_lower or 'model' in model_lower:
+                            base = 500  # Electric vehicles
+                        elif any(brand in model_lower for brand in ['lexus', 'gx', 'lx', 'rx', 'es', 'is', 'gs']):
+                            base = 1000  # Luxury
+                        else:
+                            base = 800  # Toyota
+
+                        # Age multiplier
+                        age_factor = 1 + (age * 0.1)  # 10% increase per year
+
+                        # Mileage factor
+                        if mileage > 150000:
+                            mileage_factor = 1.5
+                        elif mileage > 100000:
+                            mileage_factor = 1.3
+                        elif mileage > 50000:
+                            mileage_factor = 1.1
+                        else:
+                            mileage_factor = 1.0
+
+                        return int(base * age_factor * mileage_factor)
+
+                    df['mpg'] = df.apply(estimate_mpg, axis=1)
+                    df['maintenance'] = df.apply(estimate_maintenance, axis=1)
+
+                    # Create hover text with clickable URL
+                    df['hover_text'] = df.apply(
+                        lambda row: f"<b>{row['year']} {row['make']} {row['model']}</b><br>" +
+                                   f"💰 Price: ${row['price']:,.0f}<br>" +
+                                   f"🛣️ Mileage: {row['mileage']:,}<br>" +
+                                   f"⛽ MPG: {row['mpg']}<br>" +
+                                   f"🔧 Maintenance/yr: ${row['maintenance']:,.0f}<br>" +
+                                   f"📍 Location: {row['city']}, {row['state']}" +
+                                   (f"<br>📏 Distance: {row['distance']:.0f}mi" if pd.notna(row['distance']) else "") +
+                                   (f"<br><br>🔗 <a href='{row['source_url']}' target='_blank' style='color:#1E88E5'>Click to view on Facebook</a>" if pd.notna(row['source_url']) and row['source_url'] else "<br><br>⚠️ No listing URL available"),
+                        axis=1
+                    )
+
+                    # Calculate linear regression
+                    x_data = df[x_axis].values
+                    y_data = df[y_axis].values
+
+                    # Remove any NaN values
+                    valid_mask = ~(np.isnan(x_data) | np.isnan(y_data))
+                    x_clean = x_data[valid_mask]
+                    y_clean = y_data[valid_mask]
+
+                    if len(x_clean) >= 3:  # Need at least 3 points for regression
+                        # Linear regression
+                        slope, intercept, r_value, p_value, std_err = linregress(x_clean, y_clean)
+                        r_squared = r_value ** 2
+
+                        # Create prediction line
+                        x_range = np.linspace(x_clean.min(), x_clean.max(), 100)
+                        y_pred = slope * x_range + intercept
+
+                        # Calculate residuals and standard deviation
+                        y_fit = slope * x_clean + intercept
+                        residuals = y_clean - y_fit
+                        std_residuals = np.std(residuals)
+
+                        # 1 and 2 standard deviation bands
+                        y_pred_1std_upper = y_pred + std_residuals
+                        y_pred_1std_lower = y_pred - std_residuals
+                        y_pred_2std_upper = y_pred + 2 * std_residuals
+                        y_pred_2std_lower = y_pred - 2 * std_residuals
+                    else:
+                        r_squared = None
+                        slope = None
+
+                    # Create scatter plot
+                    if color_by:
+                        fig = px.scatter(
+                            df,
+                            x=x_axis,
+                            y=y_axis,
+                            color=color_by,
+                            hover_data={'hover_text': True, x_axis: False, y_axis: False, color_by: False},
+                            title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
+                            labels={x_axis: x_axis_label, y_axis: y_axis_label, color_by: color_by_label},
+                            color_continuous_scale='Viridis'
+                        )
+                    else:
+                        fig = px.scatter(
+                            df,
+                            x=x_axis,
+                            y=y_axis,
+                            hover_data={'hover_text': True, x_axis: False, y_axis: False},
+                            title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
+                            labels={x_axis: x_axis_label, y_axis: y_axis_label}
+                        )
+
+                    # Add regression line and confidence bands
+                    if len(x_clean) >= 3:
+                        # 2 std deviation band (lighter)
+                        fig.add_trace(go.Scatter(
+                            x=np.concatenate([x_range, x_range[::-1]]),
+                            y=np.concatenate([y_pred_2std_upper, y_pred_2std_lower[::-1]]),
+                            fill='toself',
+                            fillcolor='rgba(128, 128, 128, 0.15)',
+                            line=dict(color='rgba(255,255,255,0)'),
+                            hoverinfo='skip',
+                            showlegend=True,
+                            name='±2σ (95% confidence)'
+                        ))
+
+                        # 1 std deviation band (darker)
+                        fig.add_trace(go.Scatter(
+                            x=np.concatenate([x_range, x_range[::-1]]),
+                            y=np.concatenate([y_pred_1std_upper, y_pred_1std_lower[::-1]]),
+                            fill='toself',
+                            fillcolor='rgba(128, 128, 128, 0.25)',
+                            line=dict(color='rgba(255,255,255,0)'),
+                            hoverinfo='skip',
+                            showlegend=True,
+                            name='±1σ (68% confidence)'
+                        ))
+
+                        # Regression line
+                        fig.add_trace(go.Scatter(
+                            x=x_range,
+                            y=y_pred,
+                            mode='lines',
+                            line=dict(color='red', width=2, dash='dash'),
+                            name=f'Linear Fit (R²={r_squared:.3f})',
+                            hovertemplate=f'y = {slope:.2f}x + {intercept:.2f}<extra></extra>'
+                        ))
+
+                    # Update hover template for scatter points
+                    fig.update_traces(hovertemplate='%{customdata[0]}<extra></extra>', selector=dict(mode='markers'))
+
+                    # Update layout
+                    fig.update_layout(
+                        height=600,
+                        showlegend=True,
+                        legend=dict(
+                            yanchor="top",
+                            y=0.99,
+                            xanchor="left",
+                            x=0.01
+                        )
+                    )
+
+                    st.plotly_chart(fig, use_container_width=True)
+
+                    # Regression statistics
+                    if len(x_clean) >= 3 and r_squared is not None:
+                        st.markdown("---")
+                        st.subheader("📈 Regression Analysis")
+
+                        col1, col2, col3, col4 = st.columns(4)
+
+                        with col1:
+                            st.metric("R² (Coefficient of Determination)", f"{r_squared:.4f}")
+                            quality = "Excellent" if r_squared > 0.8 else "Good" if r_squared > 0.6 else "Moderate" if r_squared > 0.4 else "Weak"
+                            st.caption(f"Fit Quality: {quality}")
+
+                        with col2:
+                            st.metric("Pearson Correlation (r)", f"{r_value:.4f}")
+                            direction = "Strong Positive" if r_value > 0.7 else "Positive" if r_value > 0.3 else "Weak Positive" if r_value > 0 else "Weak Negative" if r_value > -0.3 else "Negative" if r_value > -0.7 else "Strong Negative"
+                            st.caption(f"{direction}")
+
+                        with col3:
+                            st.metric("Slope", f"{slope:.2f}")
+                            st.caption(f"Change in {y_axis_label} per unit {x_axis_label}")
+
+                        with col4:
+                            st.metric("Std Deviation (σ)", f"{std_residuals:.2f}")
+                            st.caption("Spread around regression line")
+
+                        # Interpretation
+                        with st.expander("📊 How to Read This Chart"):
+                            st.markdown(f"""
+                            **Regression Line (Red Dashed):** Shows the average relationship between {x_axis_label} and {y_axis_label}.
+
+                            **R² = {r_squared:.3f}:** Explains how much of the variation in {y_axis_label} is explained by {x_axis_label}.
+                            - R² close to 1.0 = strong relationship
+                            - R² close to 0.0 = weak relationship
+
+                            **Standard Deviation Bands:**
+                            - **Dark Gray (±1σ):** ~68% of data points fall within this band
+                            - **Light Gray (±2σ):** ~95% of data points fall within this band
+
+                            **Points outside 2σ band:** These are outliers - either exceptional deals or overpriced listings.
+
+                            **Slope = {slope:.2f}:** For each 1-unit increase in {x_axis_label}, {y_axis_label} {'increases' if slope > 0 else 'decreases'} by {abs(slope):.2f} on average.
+                            """)
+
+                    # Summary statistics
+                    st.markdown("---")
+                    st.subheader("Summary Statistics")
+
+                    col1, col2, col3, col4 = st.columns(4)
+
+                    with col1:
+                        st.metric("Total Listings", len(df))
+                        st.metric("Avg Price", f"${df['price'].mean():,.0f}")
+
+                    with col2:
+                        st.metric("Price Range", f"${df['price'].min():,.0f} - ${df['price'].max():,.0f}")
+                        st.metric("Avg Mileage", f"{df['mileage'].mean():,.0f}")
+
+                    with col3:
+                        st.metric("Year Range", f"{df['year'].min()} - {df['year'].max()}")
+                        st.metric("Avg MPG", f"{df['mpg'].mean():.1f}")
+
+                    with col4:
+                        nearby = df[df['distance'] <= 100].shape[0] if 'distance' in df.columns else 0
+                        st.metric("Within 100mi", nearby)
+                        st.metric("Avg Maintenance/yr", f"${df['maintenance'].mean():,.0f}")
+
+                    # Best value finder
+                    st.markdown("---")
+                    st.subheader("Best Value Analysis")
+
+                    # Calculate value score (lower price, lower mileage, newer, better mpg = higher score)
+                    df['value_score'] = (
+                        (1 - (df['price'] - df['price'].min()) / (df['price'].max() - df['price'].min() + 1)) * 30 +  # Price 30%
+                        (1 - (df['mileage'] - df['mileage'].min()) / (df['mileage'].max() - df['mileage'].min() + 1)) * 25 +  # Mileage 25%
+                        ((df['year'] - df['year'].min()) / (df['year'].max() - df['year'].min() + 1)) * 20 +  # Year 20%
+                        ((df['mpg'] - df['mpg'].min()) / (df['mpg'].max() - df['mpg'].min() + 1)) * 15 +  # MPG 15%
+                        (1 - (df['maintenance'] - df['maintenance'].min()) / (df['maintenance'].max() - df['maintenance'].min() + 1)) * 10  # Maintenance 10%
+                    )
+
+                    best_values = df.nlargest(5, 'value_score')[['year', 'make', 'model', 'price', 'mileage', 'mpg', 'maintenance', 'city', 'value_score', 'source_url']]
+
+                    st.markdown("**Top 5 Best Value Vehicles:**")
+
+                    for idx, row in best_values.iterrows():
+                        with st.container():
+                            col1, col2, col3 = st.columns([2, 2, 1])
+
+                            with col1:
+                                st.markdown(f"**{row['year']} {row['make']} {row['model']}**")
+                                st.write(f"📍 {row['city']}")
+
+                            with col2:
+                                st.write(f"💰 ${row['price']:,.0f} | 🛣️ {row['mileage']:,} mi")
+                                st.write(f"⛽ {row['mpg']} MPG | 🔧 ${row['maintenance']:,.0f}/yr")
+
+                            with col3:
+                                st.metric("Value Score", f"{row['value_score']:.1f}/100")
+                                if pd.notna(row['source_url']) and row['source_url']:
+                                    st.markdown(f"[View Listing]({row['source_url']})")
+
+                            st.markdown("---")
 
 
 def show_problems():
