@@ -395,6 +395,90 @@ def build_scenario_15_wait_june_used_gx() -> OwnershipScenario:
     )
 
 
+def build_scenario_16_sell_now_sequoia() -> OwnershipScenario:
+    """
+    Scenario 16: Sell Tesla now, buy Toyota Sequoia
+    Best for tall drivers needing max space
+    """
+    vehicles = get_all_vehicles()
+    credits_now = calculate_credits_earned(7)  # $1,400
+
+    return OwnershipScenario(
+        name="Sell Now → Sequoia",
+        vehicles=[vehicles['sequoia']],
+        months_to_analyze=36,
+        annual_mileage=20000,
+        pending_credits=credits_now,
+        months_until_credits=0,
+        trade_in_value=estimate_tesla_trade_in(0),
+        sales_tax_rate=BAY_AREA_COSTS['sales_tax_rate'],
+        storage_cost_monthly=0
+    )
+
+
+def build_scenario_17_sell_now_tundra() -> OwnershipScenario:
+    """
+    Scenario 17: Sell Tesla now, buy Toyota Tundra
+    Best towing, excellent legroom for tall drivers
+    """
+    vehicles = get_all_vehicles()
+    credits_now = calculate_credits_earned(7)  # $1,400
+
+    return OwnershipScenario(
+        name="Sell Now → Tundra",
+        vehicles=[vehicles['tundra']],
+        months_to_analyze=36,
+        annual_mileage=20000,
+        pending_credits=credits_now,
+        months_until_credits=0,
+        trade_in_value=estimate_tesla_trade_in(0),
+        sales_tax_rate=BAY_AREA_COSTS['sales_tax_rate'],
+        storage_cost_monthly=0
+    )
+
+
+def build_scenario_18_wait_june_sequoia() -> OwnershipScenario:
+    """
+    Scenario 18: Wait to June 2026, then buy Sequoia
+    Max credits + best full-size SUV for tall drivers
+    """
+    vehicles = get_all_vehicles()
+    credits_june = calculate_credits_earned(12)  # $4,400
+
+    return OwnershipScenario(
+        name="Wait June → Sequoia",
+        vehicles=[vehicles['sequoia']],
+        months_to_analyze=36,
+        annual_mileage=20000,
+        pending_credits=credits_june,
+        months_until_credits=5,
+        trade_in_value=estimate_tesla_trade_in(5),
+        sales_tax_rate=BAY_AREA_COSTS['sales_tax_rate'],
+        storage_cost_monthly=0
+    )
+
+
+def build_scenario_19_wait_june_tundra() -> OwnershipScenario:
+    """
+    Scenario 19: Wait to June 2026, then buy Tundra
+    Max credits + best towing + great fit for 6'3" driver
+    """
+    vehicles = get_all_vehicles()
+    credits_june = calculate_credits_earned(12)  # $4,400
+
+    return OwnershipScenario(
+        name="Wait June → Tundra",
+        vehicles=[vehicles['tundra']],
+        months_to_analyze=36,
+        annual_mileage=20000,
+        pending_credits=credits_june,
+        months_until_credits=5,
+        trade_in_value=estimate_tesla_trade_in(5),
+        sales_tax_rate=BAY_AREA_COSTS['sales_tax_rate'],
+        storage_cost_monthly=0
+    )
+
+
 def build_all_scenarios() -> list:
     """Build all scenarios for comparison - Updated with correct credits and used options"""
     return [
@@ -412,20 +496,25 @@ def build_all_scenarios() -> list:
         build_scenario_8_sell_now_tacoma_with_trailer(),
         build_scenario_9_keep_tesla_buy_used_truck(),
         build_scenario_10_wait_june_then_new_gx(),
-        build_scenario_11_sell_now_gx_with_trailer()
+        build_scenario_11_sell_now_gx_with_trailer(),
+        build_scenario_16_sell_now_sequoia(),  # NEW: Sequoia
+        build_scenario_17_sell_now_tundra(),    # NEW: Tundra
+        build_scenario_18_wait_june_sequoia(),  # NEW: Wait + Sequoia
+        build_scenario_19_wait_june_tundra()    # NEW: Wait + Tundra
     ]
 
 
 def get_user_priorities() -> dict:
     """
     User's feature priorities based on their needs
+    USER: 6'3" tall, needs back comfort, off-road capability
     Weights must sum to 1.0
     """
     return {
-        'cargo': 0.20,  # Important for mountain biking, surfing, camping
-        'legroom': 0.15,  # Critical due to hip problems
-        'comfort': 0.15,  # Important for long trips and hip problems
-        'outdoor': 0.25,  # Highest priority - towing, roof rack, AWD
-        'range': 0.15,  # Important for Baja, long distance
+        'legroom': 0.25,  # CRITICAL - 6'3" tall, need excellent legroom (42"+ front)
+        'comfort': 0.20,  # CRITICAL - back health, need good ride quality
+        'outdoor': 0.20,  # High priority - towing, roof rack, AWD, off-road
+        'cargo': 0.15,   # Important for mountain biking, surfing, camping
+        'range': 0.10,   # Useful for long trips
         'cost_efficiency': 0.10  # Considered but not primary concern
     }

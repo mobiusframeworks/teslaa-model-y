@@ -264,6 +264,80 @@ def create_toyota_4runner_2024() -> Vehicle:
     )
 
 
+def create_toyota_sequoia_2024() -> Vehicle:
+    """2024 Toyota Sequoia TRD Pro - Full-size SUV"""
+    return Vehicle(
+        name="2024 Toyota Sequoia TRD Pro",
+        make="Toyota",
+        model="Sequoia TRD Pro",
+        year=2024,
+        purchase_price=72000,
+        current_mileage=3000,
+        msrp=71000,
+
+        # Specifications
+        cargo_capacity_cuft=120,  # Behind front seats - HUGE
+        towing_capacity_lbs=9300,  # Best-in-class for Toyota SUVs
+        mpg_city=19,  # Hybrid powertrain
+        mpg_highway=22,
+        mpge=0,
+        fuel_type="hybrid",
+
+        # Comfort & Features - EXCELLENT for 6'3" tall
+        legroom_front_in=42.3,
+        legroom_rear_in=42.3,  # Massive rear legroom
+        ride_comfort_score=8.5,  # Very comfortable, air suspension available
+        roof_rack_capable=True,
+        awd_4wd=True,
+
+        # Ownership costs
+        insurance_annual=2100,
+        registration_annual=950,
+        maintenance_per_mile=0.13,  # Hybrid = lower than pure gas
+
+        # Depreciation factors
+        brand_reliability_score=9.5,  # Toyota reliability
+        market_demand_score=8.5  # Strong demand for new gen Sequoia
+    )
+
+
+def create_toyota_tundra_2024() -> Vehicle:
+    """2024 Toyota Tundra TRD Pro - Full-size pickup"""
+    return Vehicle(
+        name="2024 Toyota Tundra TRD Pro",
+        make="Toyota",
+        model="Tundra TRD Pro",
+        year=2024,
+        purchase_price=62000,
+        current_mileage=5000,
+        msrp=61000,
+
+        # Specifications
+        cargo_capacity_cuft=82,  # 5.5' bed + cabin storage
+        towing_capacity_lbs=12000,  # BEST towing capacity
+        mpg_city=17,  # Twin-turbo V6 hybrid
+        mpg_highway=22,
+        mpge=0,
+        fuel_type="hybrid",
+
+        # Comfort & Features - GREAT for 6'3" tall
+        legroom_front_in=42.7,
+        legroom_rear_in=42.3,  # CrewMax cab - excellent rear room
+        ride_comfort_score=7.5,  # Good for a truck, coil-spring rear
+        roof_rack_capable=True,
+        awd_4wd=True,
+
+        # Ownership costs
+        insurance_annual=1850,
+        registration_annual=850,
+        maintenance_per_mile=0.14,
+
+        # Depreciation factors
+        brand_reliability_score=9.0,  # Newer gen, still proving itself
+        market_demand_score=8.8  # Very strong demand, Tundra holds value
+    )
+
+
 # Trailer Options
 TRAILER_DATABASE = {
     'a_liner_classic': {
@@ -389,5 +463,7 @@ def get_all_vehicles() -> dict:
         'lexus_lx': create_lexus_lx_600_2024(),
         'escalade': create_escalade_2024(),
         'f150': create_ford_f150_2024(),
-        '4runner': create_toyota_4runner_2024()
+        '4runner': create_toyota_4runner_2024(),
+        'sequoia': create_toyota_sequoia_2024(),
+        'tundra': create_toyota_tundra_2024()
     }

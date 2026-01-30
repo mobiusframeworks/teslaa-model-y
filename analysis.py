@@ -202,11 +202,11 @@ def main():
         print(f"Lower cost but reduced functionality (-{best['functionality_score'] - second['functionality_score']:.1f})")
 
     print("\n3. TIMING ANALYSIS:")
-    keep_6mo = next(a for a in comparison_result['analyses'] if 'Keep Tesla 6mo' in a['scenario_name'])
+    keep_6mo = next((a for a in comparison_result['analyses'] if 'Keep Tesla' in a['scenario_name'] and 'June' in a['scenario_name']), None)
     sell_now_same = next((a for a in comparison_result['analyses']
                           if 'Sell Now → Lexus GX' in a['scenario_name']), None)
 
-    if sell_now_same:
+    if sell_now_same and keep_6mo:
         credit_benefit = keep_6mo['financial_summary']['credits']
         depreciation_cost = estimate_tesla_trade_in(0) - estimate_tesla_trade_in(6)
         net_benefit = credit_benefit - depreciation_cost
