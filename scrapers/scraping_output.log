@@ -1,0 +1,25 @@
+Database initialized: car_valuation.db
+Running QUICK SAMPLE (10-15 minutes)
+For full scrape, use: --mode full
+
+================================================================================
+                              QUICK SAMPLE SCRAPE                               
+================================================================================
+
+Scraping sfbay: Toyota Tacoma
+Scraping: https://sfbay.craigslist.org/search/cta?query=Toyota Tacoma&min_auto_year=2023&sort=date
+No more listings found
+
+Scraping sfbay: Lexus GX
+Scraping: https://sfbay.craigslist.org/search/cta?query=Lexus GX&min_auto_year=2024&sort=date
+No more listings found
+
+Scraping losangeles: Toyota Tacoma
+Scraping: https://losangeles.craigslist.org/search/cta?query=Toyota Tacoma&min_auto_year=2023&sort=date
+No more listings found
+
+Scraping losangeles: Lexus GX
+Scraping: https://losangeles.craigslist.org/search/cta?query=Lexus GX&min_auto_year=2024&sort=date
+No more listings found
+
+✓ Found 0 listings
