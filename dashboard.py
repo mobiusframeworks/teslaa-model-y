@@ -11,6 +11,8 @@ import plotly.graph_objects as go
 import urllib.parse
 import numpy as np
 from scipy.stats import linregress
+from streamlit_plotly_events import plotly_events
+import streamlit.components.v1 as components
 from database import (
     DatabaseManager, VehicleRepository, MarketPriceRepository,
     ProblemRepository, DriverFitRepository, MarketPrice
@@ -338,11 +340,12 @@ def show_home():
                     r_squared = None
                     slope = None
 
-                # Create scatter plot
+                # Create scatter plot with source_url in customdata for click events
                 if color_by:
                     fig = px.scatter(
                         df, x=x_axis, y=y_axis, color=color_by,
-                        hover_data={'hover_text': True, x_axis: False, y_axis: False, color_by: False},
+                        hover_data={'hover_text': True, 'source_url': False, x_axis: False, y_axis: False, color_by: False},
+                        custom_data=['hover_text', 'source_url'],
                         title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
                         labels={x_axis: x_axis_label, y_axis: y_axis_label, color_by: color_by_label},
                         color_continuous_scale='Viridis'
@@ -350,7 +353,8 @@ def show_home():
                 else:
                     fig = px.scatter(
                         df, x=x_axis, y=y_axis,
-                        hover_data={'hover_text': True, x_axis: False, y_axis: False},
+                        hover_data={'hover_text': True, 'source_url': False, x_axis: False, y_axis: False},
+                        custom_data=['hover_text', 'source_url'],
                         title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
                         labels={x_axis: x_axis_label, y_axis: y_axis_label}
                     )
@@ -382,7 +386,27 @@ def show_home():
                 fig.update_layout(height=600, showlegend=True,
                                 legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01))
 
-                st.plotly_chart(fig, use_container_width=True)
+                # Use plotly_events to capture clicks on data points
+                st.info("💡 **Click any dot on the chart to open the listing on Facebook Marketplace**")
+                selected_points = plotly_events(fig, click_event=True, hover_event=False, select_event=False, override_height=600)
+
+                # If a point was clicked, open the URL
+                if selected_points:
+                    point_index = selected_points[0]['pointIndex']
+                    clicked_url = df.iloc[point_index]['source_url']
+                    if pd.notna(clicked_url) and clicked_url:
+                        # Use JavaScript to open URL in new tab
+                        st.markdown(f"**Opening listing...** [Click here if it doesn't open automatically]({clicked_url})")
+                        components.html(
+                            f"""
+                            <script>
+                                window.open("{clicked_url}", "_blank");
+                            </script>
+                            """,
+                            height=0
+                        )
+                    else:
+                        st.warning("⚠️ No URL available for this listing")
 
                 # Quick stats
                 if len(x_clean) >= 3 and r_squared is not None:
@@ -1063,14 +1087,15 @@ def show_market_analysis():
                         r_squared = None
                         slope = None
 
-                    # Create scatter plot
+                    # Create scatter plot with source_url in customdata for click events
                     if color_by:
                         fig = px.scatter(
                             df,
                             x=x_axis,
                             y=y_axis,
                             color=color_by,
-                            hover_data={'hover_text': True, x_axis: False, y_axis: False, color_by: False},
+                            hover_data={'hover_text': True, 'source_url': False, x_axis: False, y_axis: False, color_by: False},
+                            custom_data=['hover_text', 'source_url'],
                             title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
                             labels={x_axis: x_axis_label, y_axis: y_axis_label, color_by: color_by_label},
                             color_continuous_scale='Viridis'
@@ -1080,7 +1105,8 @@ def show_market_analysis():
                             df,
                             x=x_axis,
                             y=y_axis,
-                            hover_data={'hover_text': True, x_axis: False, y_axis: False},
+                            hover_data={'hover_text': True, 'source_url': False, x_axis: False, y_axis: False},
+                            custom_data=['hover_text', 'source_url'],
                             title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
                             labels={x_axis: x_axis_label, y_axis: y_axis_label}
                         )
@@ -1136,7 +1162,27 @@ def show_market_analysis():
                         )
                     )
 
-                    st.plotly_chart(fig, use_container_width=True)
+                    # Use plotly_events to capture clicks on data points
+                    st.info("💡 **Click any dot on the chart to open the listing on Facebook Marketplace**")
+                    selected_points = plotly_events(fig, click_event=True, hover_event=False, select_event=False, override_height=600)
+
+                    # If a point was clicked, open the URL
+                    if selected_points:
+                        point_index = selected_points[0]['pointIndex']
+                        clicked_url = df.iloc[point_index]['source_url']
+                        if pd.notna(clicked_url) and clicked_url:
+                            # Use JavaScript to open URL in new tab
+                            st.markdown(f"**Opening listing...** [Click here if it doesn't open automatically]({clicked_url})")
+                            components.html(
+                                f"""
+                                <script>
+                                    window.open("{clicked_url}", "_blank");
+                                </script>
+                                """,
+                                height=0
+                            )
+                        else:
+                            st.warning("⚠️ No URL available for this listing")
 
                     # Regression statistics
                     if len(x_clean) >= 3 and r_squared is not None:
