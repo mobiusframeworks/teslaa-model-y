@@ -1,9 +1,16 @@
 # Vehicle Optimization System Requirements
-# All built-in Python libraries, no external dependencies needed
 
-# Python 3.8+ required for:
+# Python 3.8+ required
+
+# Core system - no external dependencies (uses built-in libraries)
 # - dataclasses (built-in)
 # - typing (built-in)
 # - json (built-in)
 # - datetime (built-in)
 # - math (built-in)
+# - sqlite3 (built-in)
+
+# Dashboard (optional - only needed for web interface)
+streamlit>=1.29.0
+plotly>=5.18.0
+pandas>=2.0.0
