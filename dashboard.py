@@ -397,7 +397,34 @@ def show_home():
                     with col4:
                         st.metric("Avg Price", f"${df['price'].mean():,.0f}")
 
-                st.info("💡 **Tip:** Hover over any dot and click the blue link to view on Facebook Marketplace!")
+                # Clickable listings table
+                st.markdown("---")
+                st.subheader("📋 View Listings")
+
+                # Prepare table data
+                table_df = df[['year', 'make', 'model', 'price', 'mileage', 'city', 'state', 'distance', 'source_url']].copy()
+                table_df = table_df.sort_values('price')
+                table_df['price'] = table_df['price'].apply(lambda x: f"${x:,.0f}")
+                table_df['mileage'] = table_df['mileage'].apply(lambda x: f"{x:,}")
+                table_df['distance'] = table_df['distance'].apply(lambda x: f"{x:.0f}mi" if pd.notna(x) else "N/A")
+
+                # Create display dataframe with link column
+                display_df = table_df[['year', 'make', 'model', 'price', 'mileage', 'city', 'state', 'distance']].copy()
+                display_df.columns = ['Year', 'Make', 'Model', 'Price', 'Mileage', 'City', 'State', 'Distance']
+
+                # Display table with clickable links
+                for idx, row in table_df.iterrows():
+                    with st.expander(f"{row['year']} {row['make']} {row['model']} - {row['price']} @ {row['mileage']} ({row['city']}, {row['state']})"):
+                        col_a, col_b = st.columns([3, 1])
+                        with col_a:
+                            st.write(f"**Location:** {row['city']}, {row['state']}")
+                            if pd.notna(row['distance']):
+                                st.write(f"**Distance:** {row['distance']}")
+                        with col_b:
+                            if pd.notna(row['source_url']) and row['source_url']:
+                                st.link_button("🔗 View on Facebook", row['source_url'], use_container_width=True)
+                            else:
+                                st.button("⚠️ No URL", disabled=True, use_container_width=True)
 
 
 def show_vehicle_finder():
@@ -1176,6 +1203,33 @@ def show_market_analysis():
                         nearby = df[df['distance'] <= 100].shape[0] if 'distance' in df.columns else 0
                         st.metric("Within 100mi", nearby)
                         st.metric("Avg Maintenance/yr", f"${df['maintenance'].mean():,.0f}")
+
+                    # Clickable listings table
+                    st.markdown("---")
+                    st.subheader("📋 View All Listings")
+                    st.info("💡 **Click the 'View on Facebook' button to open any listing**")
+
+                    # Prepare table data sorted by price
+                    table_df = df[['year', 'make', 'model', 'price', 'mileage', 'mpg', 'maintenance', 'city', 'state', 'distance', 'source_url']].copy()
+                    table_df = table_df.sort_values('price')
+
+                    # Display listings in expandable rows
+                    for idx, row in table_df.iterrows():
+                        distance_str = f"{row['distance']:.0f}mi" if pd.notna(row['distance']) else "N/A"
+                        with st.expander(f"💰 ${row['price']:,.0f} - {row['year']} {row['make']} {row['model']} @ {row['mileage']:,}mi ({distance_str})"):
+                            col_a, col_b, col_c = st.columns([2, 2, 1])
+                            with col_a:
+                                st.write(f"**Location:** {row['city']}, {row['state']}")
+                                if pd.notna(row['distance']):
+                                    st.write(f"**Distance:** {distance_str}")
+                            with col_b:
+                                st.write(f"**MPG:** {row['mpg']}")
+                                st.write(f"**Maintenance/yr:** ${row['maintenance']:,.0f}")
+                            with col_c:
+                                if pd.notna(row['source_url']) and row['source_url']:
+                                    st.link_button("🔗 View on Facebook", row['source_url'], use_container_width=True)
+                                else:
+                                    st.button("⚠️ No URL", disabled=True, use_container_width=True)
 
                     # Best value finder
                     st.markdown("---")
