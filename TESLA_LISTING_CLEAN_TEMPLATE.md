@@ -188,11 +188,16 @@ Santa Cruz / San Jose, California (Bay Area)
 
 Serious buyers only - no lowballers please. Clean title in hand, ready for immediate sale.
 
-Price: $34,900 OBO
-Available: Immediately
-Test Drives: By appointment (meet at public location)
+**Price:** $34,900 OBO
+**Available:** Immediately
+**Test Drives:** By appointment (meet at public location)
 
-Please message me with:
+**Contact:**
+- **Phone/Text:** (831) 316-4073
+- **Email:** [Your temporary Gmail here]
+- **Message:** Through Facebook Marketplace or Craigslist
+
+Please include:
 1. Your name
 2. Your availability for test drive
 3. Financing confirmation (if applicable)
@@ -264,22 +269,19 @@ This is priced fairly with significantly more upgrades than comparable listings.
 
 ## CONTACT INFORMATION:
 
-**PRIVACY TIP:** Don't post your real phone/email publicly to avoid spam!
-
-**Recommended Approach:**
-1. Use Facebook Marketplace's built-in messaging (keeps info private)
-2. Create a Google Voice number (free): https://voice.google.com
-3. Create a temporary Gmail for this sale only
-4. Only share real contact info via private message with serious buyers
-
 **Contact Preference:**
-- Message through Facebook Marketplace or Craigslist
+- Message through Facebook Marketplace or Craigslist (preferred)
 - Provide: Your name, location, availability, and if you're paying cash or need financing
 - I'll respond within 24 hours
 
 **For Serious Inquiries:**
-- [Google Voice Number - create one free at voice.google.com]
-- [Temporary Email - create tesla2024sale@gmail.com or similar]
+- **Phone/Text:** (831) 316-4073
+- **Email:** [Set up temporary Gmail - see SETUP_ANONYMOUS_CONTACT.md]
+
+**PRIVACY NOTE:**
+- Phone number forwards to my real phone (Google Voice)
+- Create a temporary Gmail that forwards to your real email
+- Both protect your privacy and can be deleted after sale
 
 **Meeting Location:**
 - Tesla Supercharger (public, well-lit, cameras)

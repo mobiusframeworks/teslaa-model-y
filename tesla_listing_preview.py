@@ -316,8 +316,8 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 **Preferred Contact Method:** Facebook Marketplace Messaging (keeps your info private!)
 
 **Alternative Contact:**
-- Email: [Create a temporary Gmail for this listing - see note below]
-- Phone: [Use Google Voice number - see note below]
+- **Phone/Text:** (831) 316-4073
+- **Email:** [Create temporary Gmail - see SETUP_ANONYMOUS_CONTACT.md]
 
 **📱 Privacy Tips to Avoid Spam:**
 
