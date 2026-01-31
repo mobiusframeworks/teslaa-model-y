@@ -191,9 +191,11 @@ def show_home():
         selected_model = st.selectbox("Select Model to Analyze", model_options, key="home_model")
 
         if selected_model:
-            # Extract make and model
-            make = selected_model.split()[0]
-            model = selected_model.split()[1]
+            # Extract make and model from "Tesla Model Y (12 listings)" format
+            clean_name = selected_model.split(" (")[0]  # Remove " (12 listings)"
+            parts = clean_name.split(maxsplit=1)  # Split on first space only
+            make = parts[0]  # "Tesla"
+            model = parts[1] if len(parts) > 1 else parts[0]  # "Model Y"
 
             # Axis selection
             col1, col2 = st.columns(2)
@@ -938,9 +940,11 @@ def show_market_analysis():
             selected_model = st.selectbox("Select Model to Analyze", model_options)
 
             if selected_model:
-                # Extract make and model
-                make = selected_model.split()[0]
-                model = selected_model.split()[1]
+                # Extract make and model from "Tesla Model Y (12 listings)" format
+                clean_name = selected_model.split(" (")[0]  # Remove " (12 listings)"
+                parts = clean_name.split(maxsplit=1)  # Split on first space only
+                make = parts[0]  # "Tesla"
+                model = parts[1] if len(parts) > 1 else parts[0]  # "Model Y"
 
                 # Axis selection
                 col1, col2 = st.columns(2)
