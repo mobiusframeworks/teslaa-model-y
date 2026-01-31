@@ -76,45 +76,37 @@ if photos:
                 st.rerun()
 
     else:
-        # Grid view - show all photos as clickable images
-        st.write("Click any photo to view full-size slideshow")
+        # Grid view - show all photos
+        st.write("Click the image area to view full-size slideshow")
 
-        # Check if user clicked a photo via query params
-        query_params = st.query_params
-        if 'photo' in query_params:
-            try:
-                clicked_idx = int(query_params['photo'])
-                st.session_state.viewing_photo = clicked_idx
-                st.query_params.clear()
-                st.rerun()
-            except:
-                pass
+        # Create columns for grid layout
+        num_cols = 4
+        rows = (len(photos) + num_cols - 1) // num_cols
 
-        cols = st.columns(4)
-        for idx, photo_path in enumerate(photos):
-            try:
-                img = Image.open(photo_path)
-                img.thumbnail((400, 400))
+        for row in range(rows):
+            cols = st.columns(num_cols)
+            for col_idx in range(num_cols):
+                idx = row * num_cols + col_idx
+                if idx < len(photos):
+                    photo_path = photos[idx]
+                    try:
+                        img = Image.open(photo_path)
+                        img.thumbnail((400, 400))
 
-                with cols[idx % 4]:
-                    # Convert image to base64 for HTML display
-                    buffered = io.BytesIO()
-                    img.save(buffered, format="JPEG")
-                    img_str = base64.b64encode(buffered.getvalue()).decode()
+                        with cols[col_idx]:
+                            # Create a container for the image
+                            container = st.container()
 
-                    # Create clickable image with HTML
-                    components.html(f"""
-                        <div style="cursor: pointer; transition: transform 0.2s;"
-                             onclick="window.parent.location.search='?photo={idx}';"
-                             onmouseover="this.style.transform='scale(1.05)'"
-                             onmouseout="this.style.transform='scale(1)'">
-                            <img src="data:image/jpeg;base64,{img_str}"
-                                 style="width: 100%; border-radius: 5px;">
-                        </div>
-                    """, height=300)
-            except Exception as e:
-                with cols[idx % 4]:
-                    st.error(f"Error loading photo {idx + 1}")
+                            # Show the image
+                            container.image(img, use_container_width=True)
+
+                            # Overlay an invisible button that opens slideshow
+                            if container.button("🔍 View", key=f"view_{idx}", use_container_width=True):
+                                st.session_state.viewing_photo = idx
+                                st.rerun()
+                    except Exception as e:
+                        with cols[col_idx]:
+                            st.error(f"Error {idx + 1}")
 else:
     st.warning("No photos found in: /Users/macmini/Desktop/tesla model y 2024")
 
