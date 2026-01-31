@@ -5,6 +5,7 @@ Interactive web-based interface for the car valuation system
 """
 
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
