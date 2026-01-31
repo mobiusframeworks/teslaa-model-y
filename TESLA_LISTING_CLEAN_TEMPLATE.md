@@ -201,13 +201,14 @@ Santa Cruz / San Jose, California (Bay Area)
 **WHAT'S INCLUDED**
 
 - All keys and key cards
-- Mobile charging cable (Level 1)
+- **Tesla Mobile Charger with extension cable**
 - Original Tesla accessories
 - Roof rack crossbars
 - Tow hitch hardware
 - All-weather floor mats (front, back, frunk, trunk)
 - Black seat covers
 - Mud flaps (front and rear)
+- **Work desk for laptop use in vehicle**
 - Inflatable camping mattress (custom-fit)
 - Blackout insulated curtains (privacy and temperature control)
 - Top glass reflective sun shade

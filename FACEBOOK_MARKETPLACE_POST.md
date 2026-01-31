@@ -137,13 +137,14 @@ This car is FSD-capable with Hardware 4. You can add Full Self-Driving anytime:
 
 **🎁 WHAT'S INCLUDED**
 • All keys and key cards
-• Mobile charging cable (Level 1)
+• **Tesla Mobile Charger with extension cable**
 • Original Tesla accessories
 • Roof rack crossbars
 • Tow hitch hardware
 • All-weather floor mats (front, back, frunk, trunk)
 • Black seat covers
 • Mud flaps (front and rear)
+• **Work desk for laptop use in vehicle**
 • Inflatable camping mattress (custom-fit)
 • Blackout insulated curtains
 • Top glass reflective sun shade
