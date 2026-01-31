@@ -231,6 +231,7 @@ def show_home():
                     mp.state,
                     mp.distance_miles,
                     mp.source_url,
+                    mp.source,
                     mp.id
                 FROM market_prices mp
                 JOIN vehicles v ON mp.vehicle_id = v.id
@@ -246,7 +247,10 @@ def show_home():
                 st.warning(f"No listings found for {make} {model}")
             else:
                 # Convert to dataframe
-                df = pd.DataFrame(listings, columns=['year', 'make', 'model', 'price', 'mileage', 'city', 'state', 'distance', 'source_url', 'id'])
+                df = pd.DataFrame(listings, columns=['year', 'make', 'model', 'price', 'mileage', 'city', 'state', 'distance', 'source_url', 'source', 'id'])
+
+                # Mark owner's listing for highlighting
+                df['is_owner'] = df['source'] == 'owner_listing'
 
                 # Add calculated fields (MPG and maintenance)
                 def estimate_mpg(row):
@@ -381,7 +385,21 @@ def show_home():
                         hovertemplate=f'y = {slope:.2f}x + {intercept:.2f}<extra></extra>'
                     ))
 
-                fig.update_traces(hovertemplate='%{customdata[0]}<extra></extra>', selector=dict(mode='markers'))
+                # Highlight owner's listing if present
+                owner_df = df[df['is_owner']]
+                if not owner_df.empty:
+                    fig.add_trace(go.Scatter(
+                        x=owner_df[x_axis],
+                        y=owner_df[y_axis],
+                        mode='markers',
+                        marker=dict(size=20, color='gold', symbol='star', line=dict(color='darkgoldenrod', width=2)),
+                        name='YOUR LISTING',
+                        customdata=owner_df['source_url'].values.reshape(-1, 1),
+                        hovertemplate='<b>YOUR LISTING</b><br>%{customdata[0]}<extra></extra>',
+                        showlegend=True
+                    ))
+
+                fig.update_traces(hovertemplate='%{customdata[0]}<extra></extra>', selector=dict(mode='markers', name=None))
                 fig.update_layout(height=600, showlegend=True,
                                 legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01))
 
