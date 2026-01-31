@@ -188,7 +188,7 @@ Inno 2-bike hitch rack: Additional $300 (retail value $400+)
 
 **🚀 FOR SERIOUS ADVENTURE-TECH ENTHUSIASTS**
 
-This isn't just a car - it's your ticket to spontaneous weekend escapes. Wake up Friday, Autopilot to Big Sur, sleep in Camp Mode, surf Saturday, drive home Sunday. All for the cost of a Chipotle burrito in electricity.
+This isn't just a car - it's your ticket to spontaneous weekend escapes. Wake up Friday, Autopilot to Big Sur, sleep in Camp Mode, surf Saturday, drive home Sunday.
 
 If you want to teleport to surf breaks, trail heads, and mountain cabins without range anxiety - this is your vehicle.
 

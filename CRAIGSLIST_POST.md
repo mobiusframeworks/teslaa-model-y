@@ -221,7 +221,7 @@ https://teslaa-model-y.streamlit.app
 
 🚀 FOR SERIOUS ADVENTURE-TECH ENTHUSIASTS
 
-This isn't just a car - it's your ticket to spontaneous weekend escapes. Wake up Friday, Autopilot to Big Sur, sleep in Camp Mode, surf Saturday, drive home Sunday. All for the cost of a Chipotle burrito in electricity.
+This isn't just a car - it's your ticket to spontaneous weekend escapes. Wake up Friday, Autopilot to Big Sur, sleep in Camp Mode, surf Saturday, drive home Sunday.
 
 If you're the type who wants to teleport to surf breaks, trail heads, and mountain cabins without thinking about gas stations or range anxiety - this is your vehicle.
 
