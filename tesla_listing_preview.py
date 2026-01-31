@@ -129,7 +129,7 @@ st.markdown("---")
 st.markdown("""
 ## 2024 Tesla Model Y Long Range AWD - The Tech Adventurer's Dream Machine
 
-For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trail heads, and weekend getaways without thinking twice about gas. This isn't just a car - it's your adventure command center on wheels. Certified Pre-Owned from Tesla, fully loaded with every upgrade you need to escape the grid while staying connected.
+For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trail heads, and weekend getaways without thinking twice about gas. This isn't just a car - it's your adventure command center on wheels. Bought CPO from Tesla in Jun 2024, fully loaded with every upgrade you need to escape the grid while staying connected.
 
 ---
 
@@ -146,12 +146,20 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 
 ---
 
-### 🛡️ WARRANTIES (Transferable)
+### 🛡️ TRANSFERABLE WARRANTY (All Coverage Goes to YOU!)
 
-- **Basic Vehicle Warranty:** 4,000 miles remaining OR until 2029 (whichever comes first)
+**ALL WARRANTIES TRANSFER AT NO COST** - tied to the VIN, not the owner. This is a HUGE benefit!
+
+- **Basic Vehicle Limited Warranty:** 4,000 miles remaining OR until 2029 (whichever comes first)
 - **Battery & Drivetrain Warranty:** Until 120,000 miles OR 2032
-- **Certified Pre-Owned from Tesla** - Purchased June 2025 at 33,500 miles
+- **Used Vehicle Limited Warranty:** 1 year/10,000 miles from Tesla CPO purchase (Jun 2024 @ 33,500 miles)
 - **Total remaining coverage:** 74,000 miles OR 6 years of worry-free ownership
+
+**What This Means For You:**
+- The original New Vehicle Limited Warranty stays with the car and goes to you until it expires
+- The Used Vehicle Limited Warranty that Tesla added when I bought it CPO also transfers to you
+- All warranties are tied to the vehicle's VIN - they automatically transfer when you complete the ownership transfer through Tesla
+- Zero cost to transfer - just register the vehicle in your Tesla account and the warranty shows up
 
 ---
 
