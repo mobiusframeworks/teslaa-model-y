@@ -37,7 +37,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 • 380 HP, 0-60 in 4.8 seconds - instant torque
 • 40-120 MPGe equivalent - teleport anywhere at pennies per mile
 • Hardware 4 - Latest FSD-capable computer (AMD Ryzen chip)
-• Autopilot up to 85 MPH - cuts cognitive load, rips through traffic
+• Autopilot up to 85 MPH - cuts cognitive load, cruises to and from San Francisco with ease
 • Grok AI Integration - real-time web search while driving
 • Approximately 300 miles real-world range
 
@@ -175,7 +175,7 @@ Inno 2-bike hitch rack: Additional $300 (retail value $400+)
 • Weekend mountain bikers - Roof rack ready, Autopilot to trails
 • Road trip minimalists - Supercharge while you sleep, save on hotels
 • Remote workers - Drive to cabin/coast, work from car with climate control
-• LA commuters who escape - Autopilot M-F, adventure on weekends
+• Bay Area commuters who escape - Autopilot M-F, adventure on weekends
 • Ski/snowboard enthusiasts - AWD + tow hitch, mountain ready
 • Van life curious - Try car camping without buying a van
 • Tech early adopters - Hardware 4, OTA updates, Grok AI, FSD-ready

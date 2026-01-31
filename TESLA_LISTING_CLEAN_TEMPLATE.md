@@ -45,7 +45,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 - 380 HP + Instant Torque - 0-60 in approximately 4.8 seconds
 - 40-120 MPGe equivalent - Teleport anywhere at pennies per mile (depending on electricity costs)
 - Hardware 4 - Latest FSD-capable computer with AMD Ryzen chip
-- Autopilot up to 85 MPH - Cuts cognitive load, rips through LA traffic effortlessly
+- Autopilot up to 85 MPH - Cuts cognitive load, cruises to and from San Francisco with ease effortlessly
 - Grok AI Integration - Real-time web search, research, advice while driving
 - Premium Audio System - Excellent speakers for road trip playlists
 - Infinitely Customizable - Every setting adjustable from 15" touchscreen
@@ -251,7 +251,7 @@ First come, first served. Adventure awaits!
 - Weekend mountain bikers - Roof rack ready, Autopilot makes trail access effortless
 - Road trip minimalists - Supercharge while you sleep, save money on hotels
 - Remote workers - Drive to cabin or coast, work from car with climate control running
-- LA commuters who escape - Autopilot through traffic Monday-Friday, adventure on weekends
+- Bay Area commuters who escape - Autopilot through traffic Monday-Friday, adventure on weekends
 - Ski and snowboard enthusiasts - AWD plus tow hitch, get to the mountain effortlessly
 - Van life curious - Try car camping without buying an entire van
 - Tech early adopters - Hardware 4, over-the-air updates, Grok AI, FSD-ready

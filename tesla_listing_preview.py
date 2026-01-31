@@ -138,7 +138,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 - **380 HP + Instant Torque** - 0-60 in approximately 4.8 seconds
 - **40-120 MPGe equivalent** - Teleport anywhere at pennies per mile (depending on electricity costs)
 - **Hardware 4** - Latest FSD-capable computer with AMD Ryzen chip
-- **Autopilot up to 85 MPH** - Cuts cognitive load, rips through LA traffic effortlessly
+- **Autopilot up to 85 MPH** - Cuts cognitive load, cruises to and from San Francisco with ease
 - **Grok AI Integration** - Real-time web search, research, advice while driving
 - **Premium Audio System** - Excellent speakers for road trip playlists
 - **Infinitely Customizable** - Every setting adjustable from 15" touchscreen
@@ -314,7 +314,7 @@ Please message me with:
 - **Weekend mountain bikers** - Roof rack ready, Autopilot makes trail access effortless
 - **Road trip minimalists** - Supercharge while you sleep, save money on hotels
 - **Remote workers** - Drive to cabin or coast, work from car with climate control running
-- **LA commuters who escape** - Autopilot through traffic Monday-Friday, adventure on weekends
+- **Bay Area commuters who escape** - Autopilot through traffic Monday-Friday, adventure on weekends
 - **Ski and snowboard enthusiasts** - AWD plus tow hitch, get to the mountain effortlessly
 - **Van life curious** - Try car camping without buying an entire van
 - **Tech early adopters** - Hardware 4, over-the-air updates, Grok AI, FSD-ready
@@ -342,40 +342,14 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 - **Phone/Text:** (831) 316-4073
 - **Email:** teslamodelyawd2024sc@gmail.com
 
-**📱 Privacy Tips to Avoid Spam:**
-
-1. **Use Facebook Marketplace Messaging** (Recommended)
-   - Built-in messaging keeps your email/phone private
-   - Can screen buyers before sharing contact details
-   - All communication stays in one place
-
-2. **Create a Google Voice Number** (Free)
-   - Get a free phone number at https://voice.google.com
-   - Forwards to your real phone
-   - Block spammers easily
-   - Disconnect number after sale
-
-3. **Create a Temporary Email**
-   - Make a new Gmail just for this sale
-   - Example: "tesla2024sale@gmail.com"
-   - Delete after car is sold
-   - Set up filters to auto-delete spam
-
-4. **Never Post Email/Phone Publicly**
-   - Only share via private message with serious buyers
-   - Ask for their budget/timeline first
-   - Verify they're local before sharing contact info
-
 **Meeting Location:**
 - Tesla Supercharger (public, well-lit, security cameras)
 - Police station parking lot for test drives
-- Never at your home address
 
 **Test Drive Requirements:**
-- Valid driver's license (take photo of it)
+- Valid driver's license
 - Proof of insurance
 - Daytime only, public location
-- Bring a friend for safety
 
 ---
 

@@ -47,7 +47,7 @@ For the person who wants to teleport to surf breaks, trail heads, and weekend ge
 • 380 HP, 0-60 in 4.8 seconds - instant torque
 • 40-120 MPGe equivalent - pennies per mile
 • Hardware 4 - Latest FSD-capable computer (AMD Ryzen)
-• Autopilot up to 85 MPH - cuts cognitive load, effortless highway driving
+• Autopilot up to 85 MPH - cuts cognitive load, cruises to and from San Francisco with ease
 • Grok AI Integration - real-time web search while driving
 • Premium Audio System - excellent speakers
 • Approximately 300 miles real-world range
@@ -193,7 +193,7 @@ Features include: Navigate on Autopilot, Auto Lane Change, Autopark, Summon, Tra
 • Weekend mountain bikers - Roof rack ready, Autopilot makes trail access effortless
 • Road trip minimalists - Supercharge while you sleep, save money on hotels
 • Remote workers - Drive to cabin or coast, work from car with climate control running
-• LA commuters who escape - Autopilot through traffic Monday-Friday, adventure on weekends
+• Bay Area commuters who escape - Autopilot through traffic Monday-Friday, adventure on weekends
 • Ski and snowboard enthusiasts - AWD plus tow hitch, get to the mountain effortlessly
 • Van life curious - Try car camping without buying an entire van
 • Tech early adopters - Hardware 4, over-the-air updates, Grok AI, FSD-ready
