@@ -10,3 +10,7 @@ scipy==1.17.0
 
 # Interactive clickable charts
 streamlit-plotly-events==0.0.6
+
+# Image handling for Tesla listing
+Pillow>=10.0.0
+pillow-heif>=0.13.0
