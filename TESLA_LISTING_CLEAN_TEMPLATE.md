@@ -264,7 +264,27 @@ This is priced fairly with significantly more upgrades than comparable listings.
 
 ## CONTACT INFORMATION:
 
-[Your contact information here]
+**PRIVACY TIP:** Don't post your real phone/email publicly to avoid spam!
+
+**Recommended Approach:**
+1. Use Facebook Marketplace's built-in messaging (keeps info private)
+2. Create a Google Voice number (free): https://voice.google.com
+3. Create a temporary Gmail for this sale only
+4. Only share real contact info via private message with serious buyers
+
+**Contact Preference:**
+- Message through Facebook Marketplace or Craigslist
+- Provide: Your name, location, availability, and if you're paying cash or need financing
+- I'll respond within 24 hours
+
+**For Serious Inquiries:**
+- [Google Voice Number - create one free at voice.google.com]
+- [Temporary Email - create tesla2024sale@gmail.com or similar]
+
+**Meeting Location:**
+- Tesla Supercharger (public, well-lit, cameras)
+- Police station parking lot for test drives
+- Daytime only
 
 ---
 
