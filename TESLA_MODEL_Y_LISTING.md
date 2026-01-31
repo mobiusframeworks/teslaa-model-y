@@ -38,7 +38,7 @@ Looking for a loaded, adventure-ready Tesla with tons of life left? This is it! 
 
 ---
 
-**🎒 ADVENTURE-READY UPGRADES ($3,000+ in add-ons!)**
+**🎒 ADVENTURE-READY UPGRADES ($4,000+ in add-ons!)**
 ✅ **Tesla OEM Roof Rack** - Professionally installed by Tesla
 ✅ **Tow Hitch w/ Connector** - 3,500 lbs capacity, bike racks, cargo carriers
 ✅ **Induction Wheels** - 19" aerodynamic wheels with excellent tire life
@@ -48,6 +48,12 @@ Looking for a loaded, adventure-ready Tesla with tons of life left? This is it! 
    - Keeps cabin cool, reduces eye strain
 ✅ **All-Weather Floor Mats** - Front, back, frunk, AND trunk
 ✅ **Tons of Storage** - Frunk + under-trunk + spacious rear cargo
+
+**🏕️ CAMPING PACKAGE INCLUDED ($500+ value!)**
+✅ **Custom-Fit Inflatable Mattress** - Converts rear seats into full bed
+✅ **Blackout Insulated Curtains** - Privacy + temperature control for overnight camping
+✅ **Top Glass Reflective Sun Shade** - Windshield protection, keeps interior cool
+✅ **Ready for Car Camping** - Sleep comfortably anywhere with climate control!
 
 ---
 
@@ -81,12 +87,14 @@ Looking for a loaded, adventure-ready Tesla with tons of life left? This is it! 
 **💎 WHY THIS ONE?**
 
 1. **Low Mileage** for price - 46k miles with 120k warranty remaining
-2. **Adventure-Ready** - Roof rack + tow hitch installed and ready
-3. **FSD Upgradeable** - Hardware 4 = $99/month or $8k for Full Self-Driving
-4. **CPO Quality** - Certified by Tesla with warranty coverage
-5. **Premium Tint** - Professionally done, reduces glare and heat
-6. **All-Weather Ready** - Mats protect every cargo area
-7. **No Dealer Markup** - Private sale, no BS fees
+2. **Adventure-Ready** - Roof rack + tow hitch + camping gear included
+3. **Car Camping Setup** - Inflatable mattress, blackout curtains, sun shade = sleep anywhere!
+4. **FSD Upgradeable** - Hardware 4 = $99/month or $8k for Full Self-Driving
+5. **CPO Quality** - Certified by Tesla with warranty coverage
+6. **Premium Tint** - Professionally done, reduces glare and heat
+7. **All-Weather Ready** - Mats protect every cargo area
+8. **No Dealer Markup** - Private sale, no BS fees
+9. **$4,000+ in Upgrades** - All included at no extra cost!
 
 ---
 
@@ -134,8 +142,11 @@ Message me with:
 - Original Tesla accessories
 - Roof rack crossbars
 - Tow hitch hardware
-- All-weather floor mats
-- Seat covers
+- All-weather floor mats (front, back, frunk, trunk)
+- Black seat covers
+- **Inflatable camping mattress (custom-fit)**
+- **Blackout insulated curtains (privacy + temp control)**
+- **Top glass reflective sun shade**
 - Owner's manual
 
 ---
@@ -160,13 +171,21 @@ This is a loaded, well-maintained Tesla with tons of upgrades and warranty cover
 ```
 🔋 2024 Tesla Model Y Long Range AWD - $34,900
 
-Adventure-ready beast with:
+Adventure-ready beast with CAMPING SETUP included:
 ✅ 380 HP, 0-60 in 4.8 sec
-✅ Hardware 4 (FSD capable)
+✅ Hardware 4 (FSD capable) + Grok AI
 ✅ Tesla roof rack + tow hitch
-✅ Premium window tint
+✅ Premium window tint (Mr. Tint SJ)
 ✅ CPO warranty until 2029/120k mi
 ✅ 46k miles, excellent condition
+
+🏕️ CAMPING PACKAGE ($500 value):
+✅ Inflatable mattress (custom-fit)
+✅ Blackout insulated curtains
+✅ Top glass reflective sun shade
+✅ Sleep anywhere with climate control!
+
+$4,000+ in upgrades included!
 
 Located: Santa Cruz/San Jose Bay Area
 Clean title, ready for immediate sale.
@@ -218,18 +237,22 @@ Serious buyers only - test drives by appointment.
 - Emphasize CPO warranty (adds $2k+ value)
 - Roof rack + tow hitch = $2k installed value
 - Premium tint = $500+ value
+- **Camping package = $500+ value** (mattress, curtains, sun shade)
 - FSD-ready Hardware 4 = future-proof
 - All-weather mats = included bonus
+- **Total upgrades: $4,000+ value**
 
 ---
 
 ### 🎯 Target Buyers:
 
-1. **Outdoor Enthusiasts** - Roof rack + tow hitch for bikes/kayaks/camping
-2. **Tech-Savvy Buyers** - Hardware 4, Grok AI, FSD-capable
-3. **Warranty Hunters** - CPO coverage until 2029/120k miles
-4. **Road Trippers** - 330-mile range, Supercharging network
-5. **Budget-Conscious** - Cheaper than new ($55k+), warranty remaining
+1. **Car Campers / Van Lifers** - Complete camping setup included, sleep anywhere!
+2. **Outdoor Enthusiasts** - Roof rack + tow hitch for bikes/kayaks/surfboards
+3. **Weekend Warriors** - Road trips, camping, beach days - this Tesla does it all
+4. **Tech-Savvy Buyers** - Hardware 4, Grok AI, FSD-capable
+5. **Warranty Hunters** - CPO coverage until 2029/120k miles
+6. **Road Trippers** - 330-mile range, Supercharging network
+7. **Budget-Conscious** - Cheaper than new ($55k+), warranty remaining
 
 ---
 
