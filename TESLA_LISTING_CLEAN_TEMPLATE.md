@@ -188,7 +188,7 @@ Santa Cruz / San Jose, California (Bay Area)
 
 **Price:** $34,900 OBO
 **Available:** Immediately
-**Test Drives:** By appointment at public location
+**Test Drives:** By appointment
 
 **Contact Alex:**
 

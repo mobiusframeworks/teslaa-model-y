@@ -213,7 +213,7 @@ Features include: Navigate on Autopilot, Auto Lane Change, Autopark, Summon, Tra
 https://teslaa-model-y.streamlit.app
 
 **Location:** Santa Cruz / San Jose, California (Bay Area)
-**Test Drives:** By appointment at public location
+**Test Drives:** By appointment
 
 **- Alex, Santa Cruz**
 

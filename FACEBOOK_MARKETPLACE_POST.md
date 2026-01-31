@@ -167,7 +167,7 @@ Inno 2-bike hitch rack: Additional $300 (retail value $400+)
 📱 **(831) 316-4073**
 📧 **teslamodelyawd2024sc@gmail.com**
 
-**Test Drives:** By appointment at public location
+**Test Drives:** By appointment
 
 **- Alex, Santa Cruz**
 

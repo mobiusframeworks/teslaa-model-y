@@ -337,14 +337,10 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 - **Phone/Text:** (831) 316-4073
 - **Email:** teslamodelyawd2024sc@gmail.com
 
-**Meeting Location:**
-- Tesla Supercharger (public, well-lit, security cameras)
-- Police station parking lot for test drives
-
 **Test Drive Requirements:**
 - Valid driver's license
 - Proof of insurance
-- Daytime only, public location
+- By appointment only
 
 ---
 
