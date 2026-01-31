@@ -192,7 +192,7 @@ Serious buyers only - no lowballers please. Clean title in hand, ready for immed
 **Available:** Immediately
 **Test Drives:** By appointment (meet at public location)
 
-**Contact:**
+**Contact Alex:**
 - **Phone/Text:** (831) 316-4073
 - **Email:** teslamodelyawd2024sc@gmail.com
 - **Message:** Through Facebook Marketplace or Craigslist
@@ -242,6 +242,8 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 
 First come, first served. Adventure awaits!
 
+**- Alex, Santa Cruz**
+
 
 **PERFECT FOR:**
 
@@ -270,7 +272,7 @@ This is priced fairly with significantly more upgrades than comparable listings.
 
 ## CONTACT INFORMATION:
 
-**How to Reach Me:**
+**Contact Alex:**
 
 - 📱 **Call/Text:** (831) 316-4073
 - 📧 **Email:** teslamodelyawd2024sc@gmail.com
@@ -283,6 +285,8 @@ This is priced fairly with significantly more upgrades than comparable listings.
 4. Any specific questions about the vehicle
 
 **Response Time:** Within 24 hours
+
+**- Alex**
 
 **PRIVACY PROTECTED:**
 - Phone forwards to my real number (Google Voice)

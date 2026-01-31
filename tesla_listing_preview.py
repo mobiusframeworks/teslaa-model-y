@@ -309,6 +309,8 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 
 **First come, first served. Adventure awaits!**
 
+**- Alex, Santa Cruz**
+
 ---
 
 ### 📞 CONTACT INFORMATION
@@ -358,7 +360,7 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 
 **💬 How to Reach Me:**
 
-**Contact Options:**
+**Contact Alex:**
 - 📱 **Call/Text:** [(831) 316-4073](tel:8313164073)
 - 📧 **Email:** [teslamodelyawd2024sc@gmail.com](mailto:teslamodelyawd2024sc@gmail.com?subject=2024%20Tesla%20Model%20Y%20-%20Test%20Drive%20Inquiry)
 - 💬 **Message:** Through Facebook Marketplace or Craigslist
@@ -370,6 +372,8 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 4. Any specific questions about the vehicle
 
 Serious buyers only - I'll respond within 24 hours!
+
+**- Alex**
 
 ---
 """)
