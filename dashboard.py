@@ -338,11 +338,12 @@ def show_home():
                     r_squared = None
                     slope = None
 
-                # Create scatter plot
+                # Create scatter plot with URLs in customdata
                 if color_by:
                     fig = px.scatter(
                         df, x=x_axis, y=y_axis, color=color_by,
                         hover_data={'hover_text': True, x_axis: False, y_axis: False, color_by: False},
+                        custom_data=['source_url'],
                         title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
                         labels={x_axis: x_axis_label, y_axis: y_axis_label, color_by: color_by_label},
                         color_continuous_scale='Viridis'
@@ -351,6 +352,7 @@ def show_home():
                     fig = px.scatter(
                         df, x=x_axis, y=y_axis,
                         hover_data={'hover_text': True, x_axis: False, y_axis: False},
+                        custom_data=['source_url'],
                         title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
                         labels={x_axis: x_axis_label, y_axis: y_axis_label}
                     )
@@ -382,7 +384,29 @@ def show_home():
                 fig.update_layout(height=600, showlegend=True,
                                 legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01))
 
-                st.plotly_chart(fig, use_container_width=True)
+                # Add click event handler to open URLs (client-side, no page reload)
+                st.info("💡 **Click any dot on the chart to open the listing on Facebook Marketplace**")
+
+                # Generate unique ID for this chart
+                chart_id = f"chart_{hash(make + model)}"
+
+                # Convert figure to HTML with custom click handler
+                plot_html = fig.to_html(include_plotlyjs='cdn', div_id=chart_id)
+
+                # Add JavaScript to handle clicks
+                custom_html = f"""
+                {plot_html}
+                <script>
+                    document.getElementById('{chart_id}').on('plotly_click', function(data) {{
+                        var point = data.points[0];
+                        if (point.customdata && point.customdata[0]) {{
+                            window.open(point.customdata[0], '_blank');
+                        }}
+                    }});
+                </script>
+                """
+
+                components.html(custom_html, height=650, scrolling=False)
 
                 # Quick stats
                 if len(x_clean) >= 3 and r_squared is not None:
@@ -1063,7 +1087,7 @@ def show_market_analysis():
                         r_squared = None
                         slope = None
 
-                    # Create scatter plot
+                    # Create scatter plot with URLs in customdata
                     if color_by:
                         fig = px.scatter(
                             df,
@@ -1071,6 +1095,7 @@ def show_market_analysis():
                             y=y_axis,
                             color=color_by,
                             hover_data={'hover_text': True, x_axis: False, y_axis: False, color_by: False},
+                            custom_data=['source_url'],
                             title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
                             labels={x_axis: x_axis_label, y_axis: y_axis_label, color_by: color_by_label},
                             color_continuous_scale='Viridis'
@@ -1081,6 +1106,7 @@ def show_market_analysis():
                             x=x_axis,
                             y=y_axis,
                             hover_data={'hover_text': True, x_axis: False, y_axis: False},
+                            custom_data=['source_url'],
                             title=f"{make} {model}: {y_axis_label} vs {x_axis_label}" + (f" (R² = {r_squared:.3f})" if r_squared is not None else ""),
                             labels={x_axis: x_axis_label, y_axis: y_axis_label}
                         )
@@ -1136,7 +1162,29 @@ def show_market_analysis():
                         )
                     )
 
-                    st.plotly_chart(fig, use_container_width=True)
+                    # Add click event handler to open URLs (client-side, no page reload)
+                    st.info("💡 **Click any dot on the chart to open the listing on Facebook Marketplace**")
+
+                    # Generate unique ID for this chart
+                    chart_id = f"chart_market_{hash(make + model)}"
+
+                    # Convert figure to HTML with custom click handler
+                    plot_html = fig.to_html(include_plotlyjs='cdn', div_id=chart_id)
+
+                    # Add JavaScript to handle clicks
+                    custom_html = f"""
+                    {plot_html}
+                    <script>
+                        document.getElementById('{chart_id}').on('plotly_click', function(data) {{
+                            var point = data.points[0];
+                            if (point.customdata && point.customdata[0]) {{
+                                window.open(point.customdata[0], '_blank');
+                            }}
+                        }});
+                    </script>
+                    """
+
+                    components.html(custom_html, height=650, scrolling=False)
 
                     # Regression statistics
                     if len(x_clean) >= 3 and r_squared is not None:
