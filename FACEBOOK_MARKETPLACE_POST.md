@@ -173,25 +173,6 @@ Inno 2-bike hitch rack: Additional $300 (retail value $400+)
 
 ---
 
-**✅ PERFECT FOR:**
-• Tech-savvy surfers - Camp Mode at beach, wake up for dawn patrol
-• Weekend mountain bikers - Roof rack ready, Autopilot to trails
-• Road trip minimalists - Supercharge while you sleep, save on hotels
-• Remote workers - Drive to cabin/coast, work from car with climate control
-• Bay Area commuters who escape - Autopilot M-F, adventure on weekends
-• Ski/snowboard enthusiasts - AWD + tow hitch, mountain ready
-• Van life curious - Try car camping without buying a van
-• Tech early adopters - Hardware 4, OTA updates, Grok AI, FSD-ready
-• Cost-conscious adventurers - Low operating costs vs gas SUV
-
----
-
-**🚀 FOR SERIOUS ADVENTURE-TECH ENTHUSIASTS**
-
-This isn't just a car - it's your ticket to spontaneous weekend escapes. Wake up Friday, Autopilot to Big Sur, sleep in Camp Mode, surf Saturday, drive home Sunday.
-
-If you want to teleport to surf breaks, trail heads, and mountain cabins without range anxiety - this is your vehicle.
-
 **📸 VIEW ALL 54 PHOTOS + FULL LISTING:**
 👉 https://teslaa-model-y.streamlit.app
 

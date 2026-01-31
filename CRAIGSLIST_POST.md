@@ -188,18 +188,6 @@ Features include: Navigate on Autopilot, Auto Lane Change, Autopark, Summon, Tra
 
 ==========================================
 
-✅ PERFECT FOR:
-
-• Tech-savvy surfers - Camp Mode at beach parking lots, wake up for dawn patrol
-• Weekend mountain bikers - Roof rack ready, Autopilot makes trail access effortless
-• Road trip minimalists - Supercharge while you sleep, save money on hotels
-• Remote workers - Drive to cabin or coast, work from car with climate control running
-• Bay Area commuters who escape - Autopilot through traffic Monday-Friday, adventure on weekends
-• Ski and snowboard enthusiasts - AWD plus tow hitch, get to the mountain effortlessly
-• Van life curious - Try car camping without buying an entire van
-• Tech early adopters - Hardware 4, over-the-air updates, Grok AI, FSD-ready
-• Cost-conscious adventurers - Low operating costs versus gas SUV
-
 ==========================================
 
 📞 CONTACT INFORMATION
@@ -218,12 +206,6 @@ https://teslaa-model-y.streamlit.app
 **- Alex, Santa Cruz**
 
 ==========================================
-
-🚀 FOR SERIOUS ADVENTURE-TECH ENTHUSIASTS
-
-This isn't just a car - it's your ticket to spontaneous weekend escapes. Wake up Friday, Autopilot to Big Sur, sleep in Camp Mode, surf Saturday, drive home Sunday.
-
-If you're the type who wants to teleport to surf breaks, trail heads, and mountain cabins without thinking about gas stations or range anxiety - this is your vehicle.
 
 First come, first served. Adventure awaits!
 
