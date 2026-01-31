@@ -186,7 +186,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 ### 🎨 INTERIOR & EXTERIOR
 
 - **White Vegan Leather Interior** with black seat covers (pristine condition)
-- **Pearl White Multi-Coat** exterior (classic Tesla look)
+- **Solid Black** exterior (classic Tesla look)
 - **5-Seat Configuration** - Spacious for adults
 - **Panoramic Glass Roof** - UV-protected, incredible views
 
@@ -347,22 +347,13 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 
 ---
 
-**💬 How to Reach Me:**
+**💬 Contact Alex:**
 
-**Contact Alex:**
-- 📱 **Call/Text:** [(831) 316-4073](tel:8313164073)
-- 📧 **Email:** [teslamodelyawd2024sc@gmail.com](mailto:teslamodelyawd2024sc@gmail.com?subject=2024%20Tesla%20Model%20Y%20-%20Test%20Drive%20Inquiry)
-- 💬 **Message:** Through Facebook Marketplace or Craigslist
+📱 **(831) 316-4073**
 
-**Please include:**
-1. Your name and location
-2. Best time to see the car
-3. Whether you need financing or paying cash
-4. Any specific questions about the vehicle
+📧 **teslamodelyawd2024sc@gmail.com**
 
-Serious buyers only - I'll respond within 24 hours!
-
-**- Alex**
+**- Alex, Santa Cruz**
 
 ---
 """)

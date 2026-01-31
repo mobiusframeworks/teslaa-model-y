@@ -78,7 +78,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 
 **🎨 INTERIOR & EXTERIOR**
 • White Vegan Leather Interior with black seat covers (pristine)
-• Pearl White Multi-Coat exterior (classic Tesla look)
+• Solid Black exterior (classic Tesla look)
 • 5-Seat Configuration - spacious for adults
 • Panoramic Glass Roof - UV-protected, incredible views
 
@@ -162,11 +162,13 @@ Inno 2-bike hitch rack: Additional $300 (retail value $400+)
 **Location:** Santa Cruz / San Jose, California (Bay Area)
 
 **Contact Alex:**
-📱 **Call/Text:** (831) 316-4073
-📧 **Email:** teslamodelyawd2024sc@gmail.com
-💬 **Message:** Through Facebook Marketplace (preferred)
 
-**Test Drives:** By appointment at public location (Tesla Supercharger or police station)
+📱 **(831) 316-4073**
+📧 **teslamodelyawd2024sc@gmail.com**
+
+**Test Drives:** By appointment at public location
+
+**- Alex, Santa Cruz**
 
 ---
 

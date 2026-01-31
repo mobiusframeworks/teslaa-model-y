@@ -95,7 +95,7 @@ ALL WARRANTIES TRANSFER AT NO COST - tied to the VIN, not the owner. You get ful
 🎨 INTERIOR & EXTERIOR
 
 • White Vegan Leather Interior with black seat covers (pristine condition)
-• Pearl White Multi-Coat exterior (classic Tesla look)
+• Solid Black exterior (classic Tesla look)
 • 5-Seat Configuration - spacious for adults
 • Panoramic Glass Roof - UV-protected, incredible views
 
@@ -203,23 +203,18 @@ Features include: Navigate on Autopilot, Auto Lane Change, Autopark, Summon, Tra
 
 📞 CONTACT INFORMATION
 
-Contact Alex:
+**Contact Alex:**
 
-📱 Call/Text: (831) 316-4073
-📧 Email: teslamodelyawd2024sc@gmail.com
+📱 **(831) 316-4073**
+📧 **teslamodelyawd2024sc@gmail.com**
 
-Location: Santa Cruz / San Jose, California (Bay Area)
-
-📸 FULL LISTING WITH ALL 54 PHOTOS:
+📸 **Full listing with all 54 photos:**
 https://teslaa-model-y.streamlit.app
 
-Test Drives: By appointment (meet at public location - Tesla Supercharger or police station parking lot)
+**Location:** Santa Cruz / San Jose, California (Bay Area)
+**Test Drives:** By appointment at public location
 
-Please include:
-1. Your name and location
-2. Best time to see the car
-3. Whether you need financing or paying cash
-4. Any specific questions about the vehicle
+**- Alex, Santa Cruz**
 
 ==========================================
 

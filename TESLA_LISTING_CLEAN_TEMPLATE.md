@@ -96,7 +96,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 **INTERIOR & EXTERIOR**
 
 - White Vegan Leather Interior with black seat covers (pristine condition)
-- Pearl White Multi-Coat exterior (classic Tesla look)
+- Solid Black exterior (classic Tesla look)
 - 5-Seat Configuration - Spacious for adults
 - Panoramic Glass Roof - UV-protected, incredible views
 
@@ -186,22 +186,16 @@ Santa Cruz / San Jose, California (Bay Area)
 
 **CONTACT & TEST DRIVE**
 
-Serious buyers only - no lowballers please. Clean title in hand, ready for immediate sale.
-
 **Price:** $34,900 OBO
 **Available:** Immediately
-**Test Drives:** By appointment (meet at public location)
+**Test Drives:** By appointment at public location
 
 **Contact Alex:**
-- **Phone/Text:** (831) 316-4073
-- **Email:** teslamodelyawd2024sc@gmail.com
-- **Message:** Through Facebook Marketplace or Craigslist
 
-Please include:
-1. Your name and location
-2. Your availability for test drive
-3. Financing confirmation (if applicable)
-4. Any specific questions about the vehicle
+📱 **(831) 316-4073**
+📧 **teslamodelyawd2024sc@gmail.com**
+
+**- Alex, Santa Cruz**
 
 
 **WHAT'S INCLUDED**
