@@ -1,16 +1,12 @@
-# Vehicle Optimization System Requirements
+# Car Valuation Dashboard Requirements
+# Python 3.10+ required for Streamlit Cloud deployment
 
-# Python 3.8+ required
+# Core Dashboard
+streamlit==1.53.1
+pandas==2.3.3
+plotly==6.5.2
+numpy==2.4.1
+scipy==1.17.0
 
-# Core system - no external dependencies (uses built-in libraries)
-# - dataclasses (built-in)
-# - typing (built-in)
-# - json (built-in)
-# - datetime (built-in)
-# - math (built-in)
-# - sqlite3 (built-in)
-
-# Dashboard (optional - only needed for web interface)
-streamlit>=1.29.0
-plotly>=5.18.0
-pandas>=2.0.0
+# Interactive clickable charts
+streamlit-plotly-events==0.0.6
