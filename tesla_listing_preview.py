@@ -15,8 +15,8 @@ import streamlit.components.v1 as components
 # Register HEIF opener
 pillow_heif.register_heif_opener()
 
-# Photo folder
-PHOTO_DIR = Path("/Users/macmini/Desktop/tesla model y 2024")
+# Photo folder - use relative path for deployment
+PHOTO_DIR = Path(__file__).parent / "photos"
 
 st.set_page_config(
     page_title="2024 Tesla Model Y - $34,900",
@@ -121,7 +121,7 @@ if photos:
                         with cols[col_idx]:
                             st.error(f"Error {idx + 1}")
 else:
-    st.warning("No photos found in: /Users/macmini/Desktop/tesla model y 2024")
+    st.warning(f"No photos found in: {PHOTO_DIR}")
 
 st.markdown("---")
 
@@ -392,5 +392,4 @@ Serious buyers only - I'll respond within 24 hours!
 """)
 
 st.markdown("---")
-st.info(f"📂 Photos loaded from: {PHOTO_DIR}")
-st.success(f"✓ Found {len(photos)} photos total")
+st.success(f"✓ {len(photos)} photos loaded")
