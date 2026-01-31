@@ -7,13 +7,7 @@ View your listing with photos in browser
 import streamlit as st
 from pathlib import Path
 from PIL import Image
-import pillow_heif
-import base64
-import io
 import streamlit.components.v1 as components
-
-# Register HEIF opener
-pillow_heif.register_heif_opener()
 
 # Photo folder - use relative path for deployment
 PHOTO_DIR = Path(__file__).parent / "photos"
@@ -44,7 +38,7 @@ st.markdown("### The Tech Adventurer's Dream Machine")
 st.markdown("---")
 
 # Get all photos (excluding last 2)
-photos = sorted(list(PHOTO_DIR.glob("IMG_*.HEIC")))[:-2]
+photos = sorted(list(PHOTO_DIR.glob("IMG_*.jpg")))
 
 if photos:
     st.subheader(f"📸 Photos ({len(photos)} total)")
