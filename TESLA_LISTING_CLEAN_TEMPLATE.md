@@ -194,13 +194,14 @@ Serious buyers only - no lowballers please. Clean title in hand, ready for immed
 
 **Contact:**
 - **Phone/Text:** (831) 316-4073
-- **Email:** [Your temporary Gmail here]
+- **Email:** teslamodelyawd2024sc@gmail.com
 - **Message:** Through Facebook Marketplace or Craigslist
 
 Please include:
-1. Your name
+1. Your name and location
 2. Your availability for test drive
 3. Financing confirmation (if applicable)
+4. Any specific questions about the vehicle
 
 
 **WHAT'S INCLUDED**
@@ -269,19 +270,25 @@ This is priced fairly with significantly more upgrades than comparable listings.
 
 ## CONTACT INFORMATION:
 
-**Contact Preference:**
-- Message through Facebook Marketplace or Craigslist (preferred)
-- Provide: Your name, location, availability, and if you're paying cash or need financing
-- I'll respond within 24 hours
+**How to Reach Me:**
 
-**For Serious Inquiries:**
-- **Phone/Text:** (831) 316-4073
-- **Email:** [Set up temporary Gmail - see SETUP_ANONYMOUS_CONTACT.md]
+- 📱 **Call/Text:** (831) 316-4073
+- 📧 **Email:** teslamodelyawd2024sc@gmail.com
+- 💬 **Message:** Through Facebook Marketplace or Craigslist (preferred)
 
-**PRIVACY NOTE:**
-- Phone number forwards to my real phone (Google Voice)
-- Create a temporary Gmail that forwards to your real email
-- Both protect your privacy and can be deleted after sale
+**Please include:**
+1. Your name and location
+2. Best time to see the car
+3. Whether you need financing or paying cash
+4. Any specific questions about the vehicle
+
+**Response Time:** Within 24 hours
+
+**PRIVACY PROTECTED:**
+- Phone forwards to my real number (Google Voice)
+- Email forwards to my real email
+- Both can be disconnected after sale
+- Your contact info stays private
 
 **Meeting Location:**
 - Tesla Supercharger (public, well-lit, cameras)

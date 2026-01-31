@@ -317,7 +317,7 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 
 **Alternative Contact:**
 - **Phone/Text:** (831) 316-4073
-- **Email:** [Create temporary Gmail - see SETUP_ANONYMOUS_CONTACT.md]
+- **Email:** teslamodelyawd2024sc@gmail.com
 
 **📱 Privacy Tips to Avoid Spam:**
 
@@ -358,7 +358,12 @@ If you're the type who wants to teleport to surf breaks, trail heads, and mounta
 
 **💬 How to Reach Me:**
 
-Message through Facebook Marketplace or Craigslist with:
+**Contact Options:**
+- 📱 **Call/Text:** [(831) 316-4073](tel:8313164073)
+- 📧 **Email:** [teslamodelyawd2024sc@gmail.com](mailto:teslamodelyawd2024sc@gmail.com?subject=2024%20Tesla%20Model%20Y%20-%20Test%20Drive%20Inquiry)
+- 💬 **Message:** Through Facebook Marketplace or Craigslist
+
+**Please include:**
 1. Your name and location
 2. Best time to see the car
 3. Whether you need financing or paying cash
