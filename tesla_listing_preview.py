@@ -24,6 +24,19 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# Skip ngrok browser warning
+st.markdown("""
+    <script>
+        window.addEventListener('load', function() {
+            if (window.location.hostname.includes('ngrok')) {
+                fetch(window.location.href, {
+                    headers: {'ngrok-skip-browser-warning': 'true'}
+                });
+            }
+        });
+    </script>
+""", unsafe_allow_html=True)
+
 # Title
 st.title("🚗 2024 Tesla Model Y Long Range AWD - $34,900")
 st.markdown("### The Tech Adventurer's Dream Machine")
