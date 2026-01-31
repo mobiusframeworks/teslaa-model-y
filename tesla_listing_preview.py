@@ -30,8 +30,8 @@ st.markdown("### The Tech Adventurer's Dream Machine")
 
 st.markdown("---")
 
-# Get all photos
-photos = sorted(list(PHOTO_DIR.glob("IMG_*.HEIC")))
+# Get all photos (excluding last 2)
+photos = sorted(list(PHOTO_DIR.glob("IMG_*.HEIC")))[:-2]
 
 if photos:
     st.subheader(f"📸 Photos ({len(photos)} total)")
