@@ -180,9 +180,12 @@ def import_listings(listings, db_path="car_valuation.db"):
 
 
 if __name__ == '__main__':
-    rtf_path = "/Users/macmini/Desktop/tesla 2024 carvana.rtfd/TXT.rtf"
+    if len(sys.argv) > 1:
+        rtf_path = sys.argv[1]
+    else:
+        rtf_path = "/Users/macmini/Desktop/tesla 2024 carvana.rtfd/TXT.rtf"
 
-    print("Parsing Carvana listings...")
+    print(f"Parsing Carvana listings from: {rtf_path}")
     listings = parse_carvana_rtf(rtf_path)
 
     print(f"\nFound {len(listings)} valid listings:")
