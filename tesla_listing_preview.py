@@ -13,19 +13,19 @@ import streamlit.components.v1 as components
 PHOTO_DIR = Path(__file__).parent / "photos"
 
 st.set_page_config(
-    page_title="2024 Tesla Model Y - $36,500",
+    page_title="2024 Tesla Model Y - $37,500",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
 # Add meta tags for social media previews
 st.markdown("""
-    <meta property="og:title" content="2024 Tesla Model Y Long Range AWD - $36,500" />
-    <meta property="og:description" content="2024 Tesla Model Y AWD with 46k miles. CPO from Tesla. Includes roof rack, tow hitch, bike rack, camping gear. $36,500 OBO" />
+    <meta property="og:title" content="2024 Tesla Model Y Long Range AWD - $37,500" />
+    <meta property="og:description" content="2024 Tesla Model Y AWD with 46k miles. CPO from Tesla. Includes roof rack, tow hitch, bike rack, camping gear. $37,500 OBO" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="2024 Tesla Model Y Long Range AWD - $36,500" />
-    <meta name="twitter:description" content="2024 Tesla Model Y AWD with 46k miles. CPO from Tesla. Includes roof rack, tow hitch, bike rack, camping gear. $36,500 OBO" />
+    <meta name="twitter:title" content="2024 Tesla Model Y Long Range AWD - $37,500" />
+    <meta name="twitter:description" content="2024 Tesla Model Y AWD with 46k miles. CPO from Tesla. Includes roof rack, tow hitch, bike rack, camping gear. $37,500 OBO" />
     <script>
         window.addEventListener('load', function() {
             if (window.location.hostname.includes('ngrok')) {
@@ -38,7 +38,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title
-st.title("🚗 2024 Tesla Model Y Long Range AWD - $36,500")
+st.title("🚗 2024 Tesla Model Y Long Range AWD - $37,500")
 st.markdown("### The Tech Adventurer's Dream Machine")
 
 st.markdown("---")
@@ -60,106 +60,7 @@ st.markdown("""
 
 st.markdown("---")
 
-# Get all photos
-photos = sorted(list(PHOTO_DIR.glob("IMG_*.jpg")))
-
-# Custom captions for specific photos showing minor cosmetic issues
-photo_captions = {
-    "IMG_0205.jpg": "Slight curb rash",
-    "IMG_0206.jpg": "A couple small nicks on the spoiler",
-    "IMG_0207.jpg": "Slight scratch near frunk",
-    "IMG_0208.jpg": "Some paint discoloration near the wheel wells"
-}
-
-if photos:
-    st.subheader(f"📸 Photos ({len(photos)} total)")
-
-    # Initialize session state for photo viewing
-    if 'viewing_photo' not in st.session_state:
-        st.session_state.viewing_photo = None
-
-    # If viewing a specific photo (slideshow mode)
-    if st.session_state.viewing_photo is not None:
-        idx = st.session_state.viewing_photo
-
-        # Close button at top
-        if st.button("✕ Close Slideshow", key="close_top"):
-            st.session_state.viewing_photo = None
-            st.rerun()
-
-        # Layout: Left arrow | Image | Right arrow
-        col1, col2, col3 = st.columns([1, 10, 1])
-
-        with col1:
-            st.write("")  # Spacing
-            st.write("")
-            st.write("")
-            if st.button("⬅️", key="prev", use_container_width=True, help="Previous photo"):
-                st.session_state.viewing_photo = (idx - 1) % len(photos)
-                st.rerun()
-
-        with col2:
-            try:
-                img = Image.open(photos[idx])
-                photo_name = photos[idx].name
-                caption = f"Photo {idx + 1} of {len(photos)}"
-                if photo_name in photo_captions:
-                    caption += f" - {photo_captions[photo_name]}"
-                st.image(img, caption=caption, use_container_width=True)
-            except Exception as e:
-                st.error(f"Could not load photo")
-
-        with col3:
-            st.write("")  # Spacing
-            st.write("")
-            st.write("")
-            if st.button("➡️", key="next", use_container_width=True, help="Next photo"):
-                st.session_state.viewing_photo = (idx + 1) % len(photos)
-                st.rerun()
-
-    else:
-        # Grid view - show all photos
-        st.write("Click the image area to view full-size slideshow")
-
-        # Create columns for grid layout
-        num_cols = 4
-        rows = (len(photos) + num_cols - 1) // num_cols
-
-        for row in range(rows):
-            cols = st.columns(num_cols)
-            for col_idx in range(num_cols):
-                idx = row * num_cols + col_idx
-                if idx < len(photos):
-                    photo_path = photos[idx]
-                    try:
-                        img = Image.open(photo_path)
-                        img.thumbnail((400, 400))
-
-                        with cols[col_idx]:
-                            # Create a container for the image
-                            container = st.container()
-
-                            # Show the image
-                            container.image(img, use_container_width=True)
-
-                            # Show caption if this is one of the cosmetic issue photos
-                            photo_name = photo_path.name
-                            if photo_name in photo_captions:
-                                container.caption(photo_captions[photo_name])
-
-                            # Overlay an invisible button that opens slideshow
-                            if container.button("🔍 View", key=f"view_{idx}", use_container_width=True):
-                                st.session_state.viewing_photo = idx
-                                st.rerun()
-                    except Exception as e:
-                        with cols[col_idx]:
-                            st.error(f"Error {idx + 1}")
-else:
-    st.warning(f"No photos found in: {PHOTO_DIR}")
-
-st.markdown("---")
-
-# Listing content
+# Listing content - Full description
 st.markdown("""
 ## 2024 Tesla Model Y Long Range AWD - The Tech Adventurer's Dream Machine
 
@@ -294,7 +195,7 @@ Features include: Navigate on Autopilot, Auto Lane Change, Autopark, Summon, Tra
 
 Serious buyers only - no lowballers please. Clean title in hand, ready for immediate sale.
 
-**Price:** $36,500 OBO
+**Price:** $37,500 OBO
 **Available:** Immediately
 **Test Drives:** By appointment (meet at public location)
 
@@ -355,6 +256,105 @@ Please message me with:
 
 ---
 """)
+
+st.markdown("---")
+
+# Get all photos
+photos = sorted(list(PHOTO_DIR.glob("IMG_*.jpg")))
+
+# Custom captions for specific photos showing minor cosmetic issues
+photo_captions = {
+    "IMG_0205.jpg": "Slight curb rash",
+    "IMG_0206.jpg": "A couple small nicks on the spoiler",
+    "IMG_0207.jpg": "Slight scratch near frunk",
+    "IMG_0208.jpg": "Some paint discoloration near the wheel wells"
+}
+
+if photos:
+    st.subheader(f"📸 Photos ({len(photos)} total)")
+
+    # Initialize session state for photo viewing
+    if 'viewing_photo' not in st.session_state:
+        st.session_state.viewing_photo = None
+
+    # If viewing a specific photo (slideshow mode)
+    if st.session_state.viewing_photo is not None:
+        idx = st.session_state.viewing_photo
+
+        # Close button at top
+        if st.button("✕ Close Slideshow", key="close_top"):
+            st.session_state.viewing_photo = None
+            st.rerun()
+
+        # Layout: Left arrow | Image | Right arrow
+        col1, col2, col3 = st.columns([1, 10, 1])
+
+        with col1:
+            st.write("")  # Spacing
+            st.write("")
+            st.write("")
+            if st.button("⬅️", key="prev", use_container_width=True, help="Previous photo"):
+                st.session_state.viewing_photo = (idx - 1) % len(photos)
+                st.rerun()
+
+        with col2:
+            try:
+                img = Image.open(photos[idx])
+                photo_name = photos[idx].name
+                caption = f"Photo {idx + 1} of {len(photos)}"
+                if photo_name in photo_captions:
+                    caption += f" - {photo_captions[photo_name]}"
+                st.image(img, caption=caption, use_container_width=True)
+            except Exception as e:
+                st.error(f"Could not load photo")
+
+        with col3:
+            st.write("")  # Spacing
+            st.write("")
+            st.write("")
+            if st.button("➡️", key="next", use_container_width=True, help="Next photo"):
+                st.session_state.viewing_photo = (idx + 1) % len(photos)
+                st.rerun()
+
+    else:
+        # Grid view - show all photos
+        st.write("Click the image area to view full-size slideshow")
+
+        # Create columns for grid layout
+        num_cols = 4
+        rows = (len(photos) + num_cols - 1) // num_cols
+
+        for row in range(rows):
+            cols = st.columns(num_cols)
+            for col_idx in range(num_cols):
+                idx = row * num_cols + col_idx
+                if idx < len(photos):
+                    photo_path = photos[idx]
+                    try:
+                        img = Image.open(photo_path)
+                        img.thumbnail((400, 400))
+
+                        with cols[col_idx]:
+                            # Create a container for the image
+                            container = st.container()
+
+                            # Show the image
+                            container.image(img, use_container_width=True)
+
+                            # Show caption if this is one of the cosmetic issue photos
+                            photo_name = photo_path.name
+                            if photo_name in photo_captions:
+                                container.caption(photo_captions[photo_name])
+
+                            # Overlay an invisible button that opens slideshow
+                            if container.button("🔍 View", key=f"view_{idx}", use_container_width=True):
+                                st.session_state.viewing_photo = idx
+                                st.rerun()
+                    except Exception as e:
+                        with cols[col_idx]:
+                            st.error(f"Error {idx + 1}")
+else:
+    st.warning(f"No photos found in: {PHOTO_DIR}")
 
 st.markdown("---")
 st.success(f"✓ {len(photos)} photos loaded")
