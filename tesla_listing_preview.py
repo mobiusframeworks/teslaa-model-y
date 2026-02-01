@@ -37,6 +37,23 @@ st.markdown("### The Tech Adventurer's Dream Machine")
 
 st.markdown("---")
 
+# Specifications at top
+st.markdown("""
+### 📊 FULL SPECIFICATIONS
+
+- **Year:** 2024
+- **Mileage:** 46,000 miles
+- **Drivetrain:** Dual Motor All-Wheel Drive
+- **Battery:** Long Range (75 kWh)
+- **Horsepower:** 380 HP
+- **0-60:** Approximately 4.8 seconds
+- **Top Speed:** 135 mph
+- **Towing Capacity:** 3,500 lbs
+- **Range:** Approximately 300 miles real-world with induction wheels
+""")
+
+st.markdown("---")
+
 # Get all photos (excluding last 2)
 photos = sorted(list(PHOTO_DIR.glob("IMG_*.jpg")))
 
@@ -200,20 +217,6 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 - **Supercharging capable** - 15 minutes = 175 miles of range (250kW peak charging)
 - **Charge at home** overnight on any outlet (Level 1 or Level 2)
 - **40-120 MPGe equivalent** - costs pennies compared to gasoline
-
----
-
-### 📊 FULL SPECIFICATIONS
-
-- **Year:** 2024
-- **Mileage:** 46,000 miles
-- **Drivetrain:** Dual Motor All-Wheel Drive
-- **Battery:** Long Range (75 kWh)
-- **Horsepower:** 380 HP
-- **0-60:** Approximately 4.8 seconds
-- **Top Speed:** 135 mph
-- **Towing Capacity:** 3,500 lbs
-- **Range:** Approximately 300 miles real-world with induction wheels
 
 ---
 
