@@ -13,7 +13,7 @@ import streamlit.components.v1 as components
 PHOTO_DIR = Path(__file__).parent / "photos"
 
 st.set_page_config(
-    page_title="2024 Tesla Model Y - $34,900",
+    page_title="2024 Tesla Model Y - $36,500",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -32,7 +32,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title
-st.title("🚗 2024 Tesla Model Y Long Range AWD - $34,900")
+st.title("🚗 2024 Tesla Model Y Long Range AWD - $36,500")
 st.markdown("### The Tech Adventurer's Dream Machine")
 
 st.markdown("---")
@@ -178,6 +178,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 
 - **Tesla OEM Roof Rack** - Professionally installed by Tesla
 - **Tow Hitch with Connector** - 3,500 lbs towing capacity, ready for bike racks and cargo carriers
+- **Inno 2-Bike Hitch Rack** - Included! ($400+ retail value)
 - **Induction Wheels (19")** - Aerodynamic design with excellent tire life remaining
 - **Mud Flaps** - Front and rear protection installed
 - **Premium Window Tint** (professionally done by Mr. Tint, San Jose):
@@ -231,9 +232,9 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 7. **Complete Adventure Package** - Roof rack, tow hitch, camping gear, all-weather mats all included
 8. **Sentry Mode Protection** - 256GB storage, real-time monitoring, excellent theft deterrent
 9. **CPO Warranty Coverage** - 74,000 miles OR 6 years of worry-free ownership remaining
-10. **$4,000+ in Upgrades** - All included at no additional cost
+10. **$4,400+ in Upgrades** - All included at no additional cost (including bike rack!)
 11. **No Dealer Markup** - Private sale, clean title, completely transparent
-12. **Optional Bike Rack Available** - Add Inno 2-bike rack for just $300
+12. **Bike Rack Included** - Inno 2-bike hitch rack ready for your adventures
 
 ---
 
@@ -270,7 +271,7 @@ Features include: Navigate on Autopilot, Auto Lane Change, Autopark, Summon, Tra
 
 Serious buyers only - no lowballers please. Clean title in hand, ready for immediate sale.
 
-**Price:** $34,900 OBO
+**Price:** $36,500 OBO
 **Available:** Immediately
 **Test Drives:** By appointment (meet at public location)
 
@@ -296,13 +297,8 @@ Please message me with:
 - Blackout insulated curtains (privacy and temperature control)
 - Top glass reflective sun shade
 - 256GB USB drive for dashcam/Sentry Mode
+- **Inno 2-bike hitch rack** (retail value $400+)
 - Owner's manual and documentation
-
----
-
-### 🎯 OPTIONAL ADD-ON
-
-**Inno 2-bike hitch rack:** Additional $300 (retail value $400+)
 
 ---
 
