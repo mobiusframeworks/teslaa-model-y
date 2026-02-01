@@ -60,8 +60,16 @@ st.markdown("""
 
 st.markdown("---")
 
-# Get all photos (excluding last 2)
+# Get all photos
 photos = sorted(list(PHOTO_DIR.glob("IMG_*.jpg")))
+
+# Custom captions for specific photos showing minor cosmetic issues
+photo_captions = {
+    "IMG_0205.jpg": "Slight curb rash",
+    "IMG_0206.jpg": "A couple small nicks on the spoiler",
+    "IMG_0207.jpg": "Slight scratch near frunk",
+    "IMG_0208.jpg": "Some paint discoloration near the wheel wells"
+}
 
 if photos:
     st.subheader(f"📸 Photos ({len(photos)} total)")
@@ -93,7 +101,11 @@ if photos:
         with col2:
             try:
                 img = Image.open(photos[idx])
-                st.image(img, caption=f"Photo {idx + 1} of {len(photos)}", use_container_width=True)
+                photo_name = photos[idx].name
+                caption = f"Photo {idx + 1} of {len(photos)}"
+                if photo_name in photo_captions:
+                    caption += f" - {photo_captions[photo_name]}"
+                st.image(img, caption=caption, use_container_width=True)
             except Exception as e:
                 st.error(f"Could not load photo")
 
@@ -129,6 +141,11 @@ if photos:
 
                             # Show the image
                             container.image(img, use_container_width=True)
+
+                            # Show caption if this is one of the cosmetic issue photos
+                            photo_name = photo_path.name
+                            if photo_name in photo_captions:
+                                container.caption(photo_captions[photo_name])
 
                             # Overlay an invisible button that opens slideshow
                             if container.button("🔍 View", key=f"view_{idx}", use_container_width=True):
