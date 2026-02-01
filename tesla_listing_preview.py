@@ -18,8 +18,14 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Skip ngrok browser warning
+# Add meta tags for social media previews
 st.markdown("""
+    <meta property="og:title" content="2024 Tesla Model Y Long Range AWD - $36,500" />
+    <meta property="og:description" content="2024 Tesla Model Y AWD with 46k miles. CPO from Tesla. Includes roof rack, tow hitch, bike rack, camping gear. $36,500 OBO" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="2024 Tesla Model Y Long Range AWD - $36,500" />
+    <meta name="twitter:description" content="2024 Tesla Model Y AWD with 46k miles. CPO from Tesla. Includes roof rack, tow hitch, bike rack, camping gear. $36,500 OBO" />
     <script>
         window.addEventListener('load', function() {
             if (window.location.hostname.includes('ngrok')) {
