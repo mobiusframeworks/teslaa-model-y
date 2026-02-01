@@ -2,6 +2,7 @@
 """
 Tesla Model Y Listing Preview
 View your listing with photos in browser
+Updated: 2026-02-01 - Range info removed
 """
 
 import streamlit as st
