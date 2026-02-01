@@ -329,7 +329,8 @@ def show_home():
                 x_clean = x_data[valid_mask]
                 y_clean = y_data[valid_mask]
 
-                if len(x_clean) >= 3:
+                # Check if we have enough data and variation for regression
+                if len(x_clean) >= 3 and len(np.unique(x_clean)) > 1:
                     slope, intercept, r_value, p_value, std_err = linregress(x_clean, y_clean)
                     r_squared = r_value ** 2
                     x_range = np.linspace(x_clean.min(), x_clean.max(), 100)
@@ -365,7 +366,7 @@ def show_home():
                     )
 
                 # Add regression bands
-                if len(x_clean) >= 3:
+                if len(x_clean) >= 3 and len(np.unique(x_clean)) > 1:
                     fig.add_trace(go.Scatter(
                         x=np.concatenate([x_range, x_range[::-1]]),
                         y=np.concatenate([y_pred_2std_upper, y_pred_2std_lower[::-1]]),
