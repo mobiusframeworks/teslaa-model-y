@@ -50,7 +50,6 @@ For the person who wants to teleport to surf breaks, trail heads, and weekend ge
 • Autopilot up to 85 MPH - cuts cognitive load, cruises to and from San Francisco with ease
 • Grok AI Integration - real-time web search while driving
 • Premium Audio System - excellent speakers
-• Approximately 300 miles real-world range
 • Infinitely customizable from 15" touchscreen
 
 ==========================================
@@ -101,12 +100,9 @@ ALL WARRANTIES TRANSFER AT NO COST - tied to the VIN, not the owner. You get ful
 
 ==========================================
 
-⚡ CHARGING & RANGE
+⚡ CHARGING
 
-• Approximately 300 miles real-world range (EPA rated 310 miles with induction wheels)
-• Important Note: 2024 Model Ys have the same battery as 2023 models, but Tesla adjusted EPA ratings (shows approximately 30 miles less on paper). Actual range is unchanged - this is just updated testing methodology.
-• Induction wheels reduce range slightly versus aero wheels but look significantly better
-• Supercharging capable - 15 minutes = 175 miles of range (250kW peak charging)
+• Supercharging capable - Fast charging network available (250kW peak charging)
 • Charge at home overnight on any outlet (Level 1 or Level 2)
 • 40-120 MPGe equivalent - costs pennies compared to gasoline
 
@@ -122,7 +118,6 @@ ALL WARRANTIES TRANSFER AT NO COST - tied to the VIN, not the owner. You get ful
 • 0-60: Approximately 4.8 seconds
 • Top Speed: 135 mph
 • Towing Capacity: 3,500 lbs
-• Range: Approximately 300 miles real-world with induction wheels
 
 ==========================================
 

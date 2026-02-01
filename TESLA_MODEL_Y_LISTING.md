@@ -79,11 +79,8 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 
 ---
 
-**⚡ CHARGING & RANGE**
-- **~300 miles** real-world range (EPA: 310 miles with induction wheels)
-- **Note:** 2024 Model Ys have same battery as 2023, but Tesla adjusted EPA ratings (~30 mi less on paper). Actual range unchanged!
-- **Induction wheels reduce range** slightly vs aero wheels, but look way better
-- **Supercharging capable** - 15 min = 175 miles (250kW peak)
+**⚡ CHARGING**
+- **Supercharging capable** - Fast charging network available (250kW peak)
 - **Charge at home** overnight on any outlet (Level 1/2)
 - **40-120 MPGe equivalent** - Costs pennies vs gas
 
@@ -107,7 +104,6 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 - **0-60:** ~4.8 seconds
 - **Top Speed:** 135 mph
 - **Towing:** 3,500 lbs
-- **Range:** ~300 miles real-world (induction wheels)
 
 ---
 
@@ -192,7 +188,7 @@ Message me with:
 
 This isn't just a car - it's your ticket to spontaneous weekend escapes. Wake up Friday, Autopilot to Big Sur, sleep in Camp Mode, surf Saturday, drive home Sunday. All for the cost of a Chipotle burrito in electricity.
 
-If you're the type who wants to teleport to surf breaks, trail heads, and mountain cabins without thinking about gas stations or range anxiety - this is your vehicle.
+If you're the type who wants to teleport to surf breaks, trail heads, and mountain cabins without thinking about gas stations - this is your vehicle.
 
 **First come, first served. Adventure awaits!** 🏔️🏄‍♂️🏕️
 
@@ -226,7 +222,7 @@ TELEPORT TO ADVENTURE at 40-120 MPGe:
 🔗 46k miles, clean title, ready for immediate sale
 💎 $4,000+ in upgrades included
 
-Perfect for tech-savvy outdoor enthusiasts who want to teleport to surf/ski/trail without range anxiety or gas station stops.
+Perfect for tech-savvy outdoor enthusiasts who want to teleport to surf/ski/trail without gas station stops.
 
 Serious buyers only - test drives by appointment.
 ```
@@ -247,7 +243,7 @@ Serious buyers only - test drives by appointment.
 9. **Roof rack close-up** - Show Tesla rack installed
 10. **Tow hitch close-up** - Show connector
 11. **Wheels/tires** - Show induction wheels, good tread
-12. **Screen showing range/features** - Display showing 330 mi range
+12. **Screen showing features** - Display showing vehicle info
 
 **Optional Detail Shots:**
 - Window tint (from inside showing clarity)

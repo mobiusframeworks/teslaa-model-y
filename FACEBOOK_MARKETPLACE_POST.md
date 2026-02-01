@@ -39,7 +39,6 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 • Hardware 4 - Latest FSD-capable computer (AMD Ryzen chip)
 • Autopilot up to 85 MPH - cuts cognitive load, cruises to and from San Francisco with ease
 • Grok AI Integration - real-time web search while driving
-• Approximately 300 miles real-world range
 
 ---
 
@@ -84,10 +83,8 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 
 ---
 
-**⚡ CHARGING & RANGE**
-• Approximately 300 miles real-world range
-• Note: 2024 Model Ys have same battery as 2023, but Tesla adjusted EPA ratings (shows 30 mi less on paper). Actual range unchanged - just updated testing methodology.
-• Supercharging: 15 min = 175 miles of range (250kW peak)
+**⚡ CHARGING**
+• Supercharging: Fast charging network available (250kW peak)
 • Charge at home overnight on any outlet
 • 40-120 MPGe equivalent - costs pennies vs gasoline
 
@@ -102,7 +99,6 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 • 0-60: ~4.8 seconds
 • Top Speed: 135 mph
 • Towing: 3,500 lbs
-• Range: ~300 miles real-world
 
 ---
 
