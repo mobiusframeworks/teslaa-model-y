@@ -57,7 +57,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 - Basic Vehicle Warranty: 4,000 miles remaining OR until 2029 (whichever comes first)
 - Battery & Drivetrain Warranty: Until 120,000 miles OR 2032
 - Certified Pre-Owned from Tesla - Purchased June 2025 at 33,500 miles
-- Total remaining coverage: 74,000 miles OR 6 years of worry-free ownership
+- Total remaining coverage: 60,000 miles OR until 2029 of worry-free ownership
 
 
 **ADVENTURE-READY UPGRADES ($4,000+ in add-ons included)**
@@ -148,7 +148,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 6. Hardware 4 Future-Proof - Latest technology, over-the-air updates, FSD-capable
 7. Complete Adventure Package - Roof rack, tow hitch, camping gear, all-weather mats all included
 8. Sentry Mode Protection - 256GB storage, real-time monitoring, excellent theft deterrent
-9. CPO Warranty Coverage - 74,000 miles OR 6 years of worry-free ownership remaining
+9. CPO Warranty Coverage - 60,000 miles OR until 2029 of worry-free ownership remaining
 10. $4,000+ in Upgrades - All included at no additional cost
 11. No Dealer Markup - Private sale, clean title, completely transparent
 12. Optional Bike Rack Available - Add Inno 2-bike rack for just $300
@@ -308,7 +308,7 @@ TESLA FORUMS:
 
 Negotiation Points to Emphasize:
 - $4,000+ in upgrades included (roof rack, tow hitch, tint, camping gear, mats, mud flaps)
-- CPO warranty with 74k miles remaining
+- CPO warranty with 60k miles remaining
 - Operating costs are $190/month versus $400+ for gas SUV = $2,500+/year in savings
 - Hardware 4 is latest generation, future-proof for FSD
 - Optional bike rack available for just $300 more (win-win add-on)

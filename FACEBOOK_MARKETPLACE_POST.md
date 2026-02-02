@@ -46,7 +46,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 ✅ **Basic Vehicle Limited Warranty:** 4,000 miles remaining OR until 2029
 ✅ **Battery & Drivetrain Warranty:** Until 120,000 miles OR 2032
 ✅ **Used Vehicle Limited Warranty:** 1 year/10,000 miles (whichever first) from Tesla CPO purchase
-✅ **Total Coverage:** 74,000 miles OR 6 years of worry-free ownership remaining
+✅ **Total Coverage:** 60,000 miles OR until 2029 of worry-free ownership remaining
 
 **ALL WARRANTIES TRANSFER TO YOU AT NO COST** - tied to the VIN, not the owner. This is a HUGE benefit! You get all remaining coverage including the CPO protection.
 
@@ -106,7 +106,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 1. **Tech Meets Adventure** - Your command center on wheels
 2. **Camp Mode Ready** - Sleep anywhere: beach, mountains, Supercharger lots
 3. **Autopilot to 85 MPH** - Long drives are effortless
-4. **Transferable Warranty** - 74k miles OR 6 years of coverage goes to YOU
+4. **Transferable Warranty** - 60k miles OR until 2029 of coverage goes to YOU
 5. **Hardware 4 Future-Proof** - Latest tech, over-the-air updates, FSD-capable
 6. **Complete Adventure Package** - Roof rack, tow hitch, camping gear included
 7. **Sentry Mode Protection** - 256GB storage, real-time monitoring

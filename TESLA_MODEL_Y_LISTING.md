@@ -117,7 +117,7 @@ For the tech-savvy outdoor enthusiast who wants to teleport to surf breaks, trai
 6. **Hardware 4 Future-Proof** - Latest tech, OTA updates, FSD-capable
 7. **Complete Adventure Package** - Roof rack, tow hitch, camping gear, all-weather mats
 8. **Sentry Mode Protection** - 256GB storage, real-time monitoring, theft deterrent
-9. **CPO Warranty Coverage** - 74k miles OR 6 years of worry-free ownership left
+9. **CPO Warranty Coverage** - 60k miles OR until 2029 of worry-free ownership left
 10. **$4,000+ in Upgrades** - All included, no extra cost
 11. **No Dealer BS** - Private sale, clean title, transparent
 
@@ -205,7 +205,7 @@ TELEPORT TO ADVENTURE at 40-120 MPGe:
 ✅ Camp Mode - sleep anywhere with climate control
 ✅ Hardware 4 + Grok AI - latest tech, FSD-capable
 ✅ Sentry Mode + 256GB storage - real-time monitoring
-✅ CPO warranty: 74k miles OR 6 years remaining
+✅ CPO warranty: 60k miles OR until 2029 remaining
 
 🏕️ ADVENTURE PACKAGE INCLUDED:
 ✅ Tesla OEM roof rack + tow hitch (3,500 lbs)

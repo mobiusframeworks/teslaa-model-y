@@ -59,7 +59,7 @@ For the person who wants to teleport to surf breaks, trail heads, and weekend ge
 ✅ Basic Vehicle Limited Warranty: 4,000 miles OR until 2029 remaining
 ✅ Battery & Drivetrain Warranty: Until 120,000 miles OR 2032
 ✅ Used Vehicle Limited Warranty: 1 year/10,000 miles from Tesla CPO purchase
-✅ Total Coverage Remaining: 74,000 miles OR 6 years
+✅ Total Coverage Remaining: 60,000 miles OR until 2029
 
 ALL WARRANTIES TRANSFER AT NO COST - tied to the VIN, not the owner. You get full CPO protection and all remaining coverage. This is a massive benefit!
 
@@ -126,7 +126,7 @@ ALL WARRANTIES TRANSFER AT NO COST - tied to the VIN, not the owner. You get ful
 1. Tech Meets Adventure - Not just a car, it's your adventure command center
 2. Camp Mode Ready - Sleep anywhere: beach, mountains, Supercharger parking lots
 3. Autopilot to 85 MPH - Makes long drives to surf/ski/trail completely effortless
-4. Transferable Warranty - 74,000 miles OR 6 years of worry-free ownership goes to YOU
+4. Transferable Warranty - 60,000 miles OR until 2029 of worry-free ownership goes to YOU
 5. Teleport Economics - 40-120 MPGe equivalent means go anywhere without worrying about fuel costs
 6. Hardware 4 Future-Proof - Latest technology, over-the-air updates, FSD-capable
 7. Complete Adventure Package - Roof rack, tow hitch, camping gear, all-weather mats all included

@@ -124,7 +124,7 @@ Deployment takes about 2-3 minutes.
 
 **Negotiation Tips:**
 - Emphasize $4,000+ in upgrades (roof rack, tow hitch, tint, camping gear, mats, mud flaps)
-- CPO warranty with 74k miles remaining
+- CPO warranty with 60k miles remaining
 - Operating costs: $190/month vs $400+ for gas SUV = $2,500+/year in savings
 - Hardware 4 is latest generation, future-proof for FSD
 - Optional bike rack available for just $300 more (win-win add-on)
